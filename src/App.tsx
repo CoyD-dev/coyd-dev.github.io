@@ -1,11 +1,126 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    if (isMobileMenuOpen) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsMobileMenuOpen(false);
+        setIsAnimating(false);
+      }, 300);
+    } else {
+      setIsMobileMenuOpen(true);
+      setTimeout(() => setIsAnimating(true), 10);
+    }
+  };
+
+  const closeMobileMenu = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setIsAnimating(false);
+    }, 300);
+  };
+
   return (
     <div className="min-h-screen bg-gaming-dark text-white">
 
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-95 backdrop-blur-sm border-b border-gaming-gold border-opacity-20">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src="https://rankupacademy.gg/assets/RUA-Logo-147557a47311e385321694bba7ec05e8483dde36386908d1ef3bf1d2854d1ee5.svg"
+              alt="Rank Up Academy Logo"
+              className="h-10 w-auto mr-3"
+            />
+            <span className="font-gaming text-xl font-bold text-gaming-gold">RANK UP ACADEMY</span>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#home" className="text-gray-300 hover:text-gaming-gold transition-colors">Home</a>
+            <a href="#about" className="text-gray-300 hover:text-gaming-gold transition-colors">About</a>
+            <a href="#services" className="text-gray-300 hover:text-gaming-gold transition-colors">Services</a>
+            <a href="#testimonials" className="text-gray-300 hover:text-gaming-gold transition-colors">Testimonials</a>
+            <a href="#contact" className="text-gray-300 hover:text-gaming-gold transition-colors">Contact</a>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <a href="/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline">
+              Log In
+            </a>
+            <a href="/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline">
+              Get Started
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              className="md-hidden-mobile bg-gaming-gold text-gaming-dark p-2 rounded-lg"
+              onClick={handleMobileMenuToggle}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className={`md:hidden fixed inset-0 z-60 ${isAnimating ? 'mobile-menu-enter-active' : 'mobile-menu-enter'}`}
+          style={{ backgroundColor: 'rgb(26, 31, 58)' }}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 bg-gaming-gold text-gaming-dark p-2 rounded-lg z-50"
+            onClick={closeMobileMenu}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
+            <div className="flex flex-col space-y-4">
+              <a href="/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline" onClick={closeMobileMenu}>
+                Get Started
+              </a>
+              <a href="/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline" onClick={closeMobileMenu}>
+                Log In
+              </a>
+            </div>
+
+            <a href="#home" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+              Home
+            </a>
+            <a href="#about" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+              About
+            </a>
+            <a href="#services" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+              Services
+            </a>
+            <a href="#testimonials" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+              Testimonials
+            </a>
+            <a href="#contact" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+              Contact
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative min-h-screen hero-gradient overflow-hidden">
+      <section className="relative min-h-screen hero-gradient overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-gaming-dark via-gaming-blue to-primary-600 opacity-90"></div>
 
         <div className="relative z-10 container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center justify-between min-h-screen">
