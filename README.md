@@ -1,46 +1,99 @@
-# Getting Started with Create React App
+# Rank Up Academy - Overwatch 2 Coaching Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React.js website for Rank Up Academy - Professional Overwatch 2 coaching and esports training. Features an interactive testimonials gallery, responsive design, and engaging user experience.
+
+🌐 **Live Site:** [https://coyd-dev.github.io](https://coyd-dev.github.io)
+
+## Features
+
+- 🎮 **Hero Section** with dynamic background and call-to-action
+- 📱 **Responsive Design** optimized for desktop, tablet, and mobile
+- 🎯 **Benefits Section** with scroll-triggered animations
+- 🖼️ **Interactive Testimonials Gallery** with modal viewer and navigation
+- ⚡ **Smooth Animations** and hover effects throughout
+- 🎨 **Gaming-themed Design** with golden accent colors
+
+## Technology Stack
+
+- **React.js 19.1.1** with TypeScript
+- **CSS3** with custom animations and responsive design
+- **GitHub Pages** for hosting and deployment
+- **ESLint** for code quality
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/CoyD-dev/coyd-dev.github.io.git
+cd coyd-dev.github.io
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Deployment
+
+To deploy to GitHub Pages:
+```bash
+npm run deploy
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm run deploy` - Deploys the app to GitHub Pages
+- `npm test` - Launches the test runner
 
-### `npm start`
+## Credits & Acknowledgments
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Content Creator
+**Awkward** - Professional Overwatch 2 Coach & Content Creator
+- 🌐 Website: [rankupacademy.gg](https://rankupacademy.gg)
+- 🐦 Twitter: [twitter.com/awkwardOW](https://twitter.com/awkwardOW)
+- 📸 Instagram: [instagram.com/danynovak1](https://instagram.com/danynovak1)
+- 🎥 YouTube: [youtube.com/@Awkward3](https://youtube.com/@Awkward3)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Design & Assets
+**sweetiepie3820** (Discord) - Design consultation and image assets
 
-### `npm test`
+## Disclaimer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is a **volunteer project** created for educational and portfolio purposes.
 
-### `npm run build`
+- **No commercial intent** - This project was built as a demonstration of web development skills
+- **No rights claimed** - All content, branding, and testimonials belong to their respective owners
+- **Educational use** - Created to showcase React.js development capabilities and modern web design
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── App.tsx                 # Main application component
+├── index.css              # Global styles and responsive design
+├── testemonials.json      # Testimonials data
+└── assets/                # Static assets and reference images
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
 
-### `npm run eject`
+This project is created for educational purposes. All rights to the Rank Up Academy brand, content, and testimonials remain with their respective owners.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Built with ❤️ using React.js and modern web technologies.
