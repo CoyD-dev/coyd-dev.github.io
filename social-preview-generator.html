@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Up Academy - Social Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .social-preview {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 50%, #1A1A1A 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Quantico', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(252, 211, 5, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(252, 211, 5, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(252, 211, 5, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-image: url('https://coyd-dev.github.io/assets/square_tracer-hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            mask: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 60px;
+            text-align: left;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FCD305;
+            text-shadow: 0 0 20px rgba(252, 211, 5, 0.5);
+        }
+
+        .main-headline {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FCD305 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #FCD305;
+            margin-bottom: 30px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #FCD305;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon::after {
+            content: "✓";
+            color: #1A1A1A;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .website-url {
+            font-size: 1.2rem;
+            color: #FCD305;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .golden-accent {
+            position: absolute;
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, #FCD305, transparent);
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .corner-accent {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #FCD305;
+            border-left: none;
+            border-top: none;
+            opacity: 0.3;
+        }
+
+        @media screen {
+            body {
+                margin: 50px;
+                background: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="social-preview">
+        <div class="background-pattern"></div>
+        <div class="hero-background"></div>
+
+        <div class="decorative-elements">
+            <div class="golden-accent"></div>
+            <div class="corner-accent"></div>
+        </div>
+
+        <div class="content">
+            <div class="logo-section">
+                <img class="logo" src="https://rankupacademy.gg/assets/RUA-Logo-147557a47311e385321694bba7ec05e8483dde36386908d1ef3bf1d2854d1ee5.svg" alt="Rank Up Academy Logo" />
+                <div class="brand-name">RANK UP ACADEMY</div>
+            </div>
+
+            <h1 class="main-headline">FROM GETTING CARRIED<br>TO BEING THE CARRY</h1>
+
+            <p class="subtitle">Professional Overwatch 2 Coaching & Esports Training</p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Personalized VOD Reviews</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Top 500 Specialists</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Community Learning</span>
+                </div>
+            </div>
+
+            <div class="website-url">rankupacademy.gg</div>
+        </div>
+    </div>
+
+    <script>
+        // Instructions for generating the image:
+        console.log("To create the social preview image:");
+        console.log("1. Open this HTML file in a browser");
+        console.log("2. Take a screenshot of the preview (1200x630px)");
+        console.log("3. Save as 'social-preview.png' or 'social-preview.jpg'");
+        console.log("4. Upload to your public folder or assets");
+        console.log("5. Update meta tags in index.html");
+    </script>
+</body>
+</html>
