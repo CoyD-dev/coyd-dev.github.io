@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm start)",
+      "Bash(dir)",
+      "Bash(dir:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
