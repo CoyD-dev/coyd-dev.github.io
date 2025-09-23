@@ -147,78 +147,69 @@ function App() {
             <div className="max-w-3xl relative">
               {/* Hero content wrapper that moves with the geometric box */}
               <div className="hero-text-wrapper">
-                {/* Stylish geometric background - Option 1: Tilted Square */}
+                {/* Stylish geometric background with content inside */}
                 <div
-                  className="absolute geometric-box"
+                  className="geometric-box"
                   style={{
-                    width: 'calc(100vw - 4rem)',
-                    maxWidth: '33rem',
-                    height: '23rem',
-                    margin: '0 0 0 1rem',
                     background: 'linear-gradient(135deg, rgba(252, 211, 5, 0.15), rgba(252, 211, 5, 0.05))',
                     borderRadius: '20px',
-                    top: '-50px',
-                    left: '-50px',
                     border: '2px solid rgba(252, 211, 5, 0.3)',
                     backdropFilter: 'blur(10px)',
-                    zIndex: -1
+                    padding: '3rem 2rem',
+                    margin: '1rem',
+                    maxWidth: '35rem'
                   }}
-                ></div>
+                >
+                  {/* Hero Text Content */}
+                  {/* Line 1: FROM GETTING CARRIED */}
+                  <div className="mb-4">
+                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
+                      FROM GETTING CARRIED
+                    </span>
+                  </div>
 
-                {/* Alternative Option 2: Hexagon (uncomment to use instead) */}
-                {/* <div className="hero-hexagon"></div> */}
+                  {/* Line 2: TO BEING THE CARRY */}
+                  <div className="mb-6">
+                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
+                      TO BEING{' '}
+                    </span>
+                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500">
+                      THE CARRY
+                    </span>
+                  </div>
 
-                {/* Hero Text Content with margin for positioning within geometric shape */}
-                <div style={{ margin: '1rem', marginRight: '1rem' }}>
-              {/* Line 1: FROM GETTING CARRIED */}
-            <div className="mb-4">
-              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
-                FROM GETTING CARRIED
-              </span>
-            </div>
+                  {/* Line 3: WE WILL TEACH YOU HOW TO RANK UP */}
+                  <div className="mb-8">
+                    <p className="font-gaming text-gaming-gold" style={{ fontSize: '1.25rem', fontWeight: '100' }}>
+                      WE WILL TEACH YOU HOW TO RANK UP
+                    </p>
+                  </div>
 
-            {/* Line 2: TO BEING THE CARRY */}
-            <div className="mb-6">
-              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
-                TO BEING{' '}
-              </span>
-              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500">
-                THE CARRY
-              </span>
-            </div>
+                  {/* Line 4: Button and Limited Slots */}
+                  <div className="flex items-center gap-6">
+                    {/* Column 1: START NOW Button */}
+                    <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
+                      START NOW
+                    </a>
 
-            {/* Line 3: WE WILL TEACH YOU HOW TO RANK UP */}
-            <div className="mb-8">
-              <p className="font-gaming text-gaming-gold" style={{ fontSize: '1.25rem', fontWeight: '100' }}>
-                WE WILL TEACH YOU HOW TO RANK UP
-              </p>
-            </div>
-
-            {/* Line 4: Button and Limited Slots */}
-            <div className="flex items-center gap-6">
-              {/* Column 1: START NOW Button */}
-              <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
-                START NOW
-              </a>
-
-              {/* Column 2: LIMITED SLOTS AVAILABLE */}
-              <div className="rounded-lg" style={{
-                border: '1px solid #FCD305',
-                marginLeft: '1rem',
-                paddingLeft: '1rem',
-                paddingRight: '1rem',
-                paddingTop: '0.25rem',
-                paddingBottom: '0.25rem'
-              }}>
-                <span className="text-gaming-gold font-bold text-lg font-gaming">
-                  LIMITED SLOTS AVAILABLE
-                </span>
+                    {/* Column 2: LIMITED SLOTS AVAILABLE */}
+                    <div className="rounded-lg" style={{
+                      border: '1px solid #FCD305',
+                      marginLeft: '1rem',
+                      paddingLeft: '1rem',
+                      paddingRight: '1rem',
+                      paddingTop: '0.25rem',
+                      paddingBottom: '0.25rem'
+                    }}>
+                      <span className="text-gaming-gold font-bold text-lg font-gaming">
+                        LIMITED SLOTS AVAILABLE
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            </div>
-              </div>
           </div>
-        </div>
         </div>
 
         {/* Bottom Gradient Blur */}
@@ -277,7 +268,7 @@ function App() {
       </section>
 
       {/* Video and Introduction Section */}
-      <section className="bg-gaming-dark" style={{ paddingTop: "0rem", paddingBottom: "5rem" }}>
+      <section className="bg-gaming-dark video-section-padding">
         <div className="container mx-auto px-4">
           <div style={{
             display: "grid",
@@ -388,7 +379,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="relative max-w-4xl mx-auto">
             {/* Golden Vertical Line */}
-            <div style={{
+            <div id="benefits-vertical-line" style={{
               position: "absolute",
               left: "38px",
               top: "0",
@@ -402,7 +393,7 @@ function App() {
               {/* Benefit 1: Time */}
               <div className="flex items-start benefit-item">
                 {/* Circle Bullet */}
-                <div style={{
+                <div className="benefit-circle" style={{
                   width: "80px",
                   height: "80px",
                   backgroundColor: "#FFFFFF",
@@ -426,8 +417,8 @@ function App() {
                 </div>
 
                 {/* Content */}
-                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
-                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                <div style={{ marginLeft: "2rem" }}>
+                  <h3 className="font-gaming font-bold text-white benefit-title uppercase tracking-wider">
                     TIME
                   </h3>
                   <p className="text-gray-300 text-xl leading-relaxed max-w-4xl">
@@ -439,7 +430,7 @@ function App() {
               {/* Benefit 2: Potential */}
               <div className="flex items-start benefit-item">
                 {/* Circle Bullet */}
-                <div style={{
+                <div className="benefit-circle" style={{
                   width: "80px",
                   height: "80px",
                   backgroundColor: "#FFFFFF",
@@ -463,8 +454,8 @@ function App() {
                 </div>
 
                 {/* Content */}
-                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
-                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                <div style={{ marginLeft: "2rem" }}>
+                  <h3 className="font-gaming font-bold text-white benefit-title uppercase tracking-wider">
                     POTENTIAL
                   </h3>
                   <p className="text-gray-300 text-xl leading-relaxed max-w-4xl">
@@ -476,7 +467,7 @@ function App() {
               {/* Benefit 3: Mindset */}
               <div className="flex items-start benefit-item">
                 {/* Circle Bullet */}
-                <div style={{
+                <div className="benefit-circle" style={{
                   width: "80px",
                   height: "80px",
                   backgroundColor: "#FFFFFF",
@@ -500,7 +491,7 @@ function App() {
 
                 {/* Content */}
                 <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
-                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                  <h3 className="font-gaming font-bold text-white benefit-title uppercase tracking-wider">
                     MINDSET
                   </h3>
                   <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">
@@ -523,7 +514,7 @@ function App() {
               {/* Benefit 4: Access */}
               <div className="flex items-start benefit-item">
                 {/* Circle Bullet */}
-                <div style={{
+                <div className="benefit-circle" style={{
                   width: "80px",
                   height: "80px",
                   backgroundColor: "#FFFFFF",
@@ -548,7 +539,7 @@ function App() {
 
                 {/* Content */}
                 <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
-                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                  <h3 className="font-gaming font-bold text-white benefit-title uppercase tracking-wider">
                     ACCESS
                   </h3>
                   <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">
@@ -571,7 +562,7 @@ function App() {
               {/* Benefit 5: Community */}
               <div className="flex items-start benefit-item">
                 {/* Circle Bullet */}
-                <div style={{
+                <div className="benefit-circle" style={{
                   width: "80px",
                   height: "80px",
                   backgroundColor: "#FFFFFF",
@@ -596,7 +587,7 @@ function App() {
 
                 {/* Content */}
                 <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
-                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                  <h3 className="font-gaming font-bold text-white benefit-title uppercase tracking-wider">
                     COMMUNITY
                   </h3>
                   <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">

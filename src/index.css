@@ -587,4 +587,102 @@ nav a[href="/sign_up"]:hover {
 
 .benefit-title {
   margin-bottom: 1rem;
+  font-size: 4rem;
+}
+
+.benefit-circle {
+  margin-top: 1rem;
+}
+
+/* Small mobile screens */
+@media (max-width: 600px) {
+  .hero-text-wrapper .font-gaming {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-text-wrapper .text-4xl,
+  .hero-text-wrapper .md\\:text-5xl,
+  .hero-text-wrapper .lg\\:text-6xl {
+    font-size: 1.5rem !important;
+  }
+
+  .geometric-box {
+    padding: 1.5rem 1rem !important;
+    margin: 0.5rem !important;
+  }
+
+  .hero-text-wrapper .text-lg {
+    font-size: 0.875rem !important;
+  }
+
+  .hero-text-wrapper .py-4 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .hero-text-wrapper .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Benefits section adjustments for ultra-small screens */
+  .benefit-title {
+    font-size: 1.75rem !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .benefit-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 3rem !important;
+  }
+
+  .benefit-item > div:last-child {
+    margin-left: 0 !important;
+    margin-top: 1rem !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+
+  .benefit-title {
+    text-align: center !important;
+  }
+
+  .benefit-item p,
+  .benefit-item ul {
+    line-height: 1.5 !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: justify !important;
+  }
+
+  .benefit-item li {
+    align-items: flex-start !important;
+    text-align: justify !important;
+  }
+
+  /* Hide the golden vertical line for mobile layout */
+  #benefits-vertical-line {
+    display: none !important;
+  }
+
+  /* Remove bottom padding from video section on mobile */
+  section.bg-gaming-dark[style*="paddingBottom"] {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Video section padding class with responsive behavior */
+.video-section-padding {
+  padding-top: 0rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 600px) {
+  .video-section-padding {
+    padding-bottom: 0rem;
+  }
 }
