@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import testimonialsData from './testemonials.json';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [showAllGallery, setShowAllGallery] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollY = useRef(0);
 
@@ -24,6 +27,27 @@ function App() {
       setIsMobileMenuOpen(false);
       setIsClosing(false);
     }, 300);
+  };
+
+  const openImageViewer = (imageUrl: string) => {
+    const index = testimonialsData.indexOf(imageUrl);
+    setSelectedImageIndex(index);
+  };
+
+  const closeImageViewer = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const navigateImage = (direction: 'prev' | 'next') => {
+    if (selectedImageIndex === null) return;
+
+    let newIndex;
+    if (direction === 'prev') {
+      newIndex = selectedImageIndex === 0 ? testimonialsData.length - 1 : selectedImageIndex - 1;
+    } else {
+      newIndex = selectedImageIndex === testimonialsData.length - 1 ? 0 : selectedImageIndex + 1;
+    }
+    setSelectedImageIndex(newIndex);
   };
 
   // Intersection Observer for scroll animations
@@ -442,7 +466,7 @@ function App() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gaming-dark benefits-section-container">
+      <section className="bg-gaming-dark benefits-section-container">
         <div className="container mx-auto px-4">
           <div className="relative max-w-4xl mx-auto">
             {/* Golden Vertical Line */}
@@ -696,6 +720,183 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <section style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        backgroundColor: "#1A1A1A",
+        padding: "48px 0"
+      }}>
+        {/* Left Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
+
+        {/* Center Text */}
+        <div style={{
+          textAlign: "center",
+          margin: "0 40px",
+          color: "#FCD305"
+        }}>
+          <h2 className="font-gaming" style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            marginBottom: "0",
+            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
+          }}>
+            TESTIMONIALS
+          </h2>
+        </div>
+
+        {/* Right Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-20 bg-gaming-dark">
+        <div className="container mx-auto px-4">
+          <div className="gallery-container">
+            {/* Gallery Grid */}
+            <div className="gallery-grid">
+              {/* Generate gallery tiles from testimonials data */}
+              {testimonialsData
+                .slice(0, showAllGallery ? testimonialsData.length : 4)
+                .map((imageUrl, index) => (
+                  <div
+                    key={index}
+                    className="gallery-tile"
+                    onClick={() => openImageViewer(imageUrl)}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt={`Testimonial ${index + 1}`}
+                      className="gallery-image"
+                    />
+                  </div>
+                ))}
+            </div>
+
+            {/* Show All Button */}
+            <div
+              className="gallery-toggle"
+              onClick={() => setShowAllGallery(!showAllGallery)}
+            >
+              <span>ALL</span>
+              <svg
+                className={`gallery-chevron ${showAllGallery ? 'rotated' : ''}`}
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 7.5L10 12.5L15 7.5"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Viewer Modal */}
+      {selectedImageIndex !== null && (
+        <div className="image-viewer-overlay" onClick={closeImageViewer}>
+          <div className="image-viewer-container" onClick={(e) => e.stopPropagation()}>
+            <button className="image-viewer-close" onClick={closeImageViewer}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18M6 6L18 18"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <img
+              src={testimonialsData[selectedImageIndex]}
+              alt="Enlarged testimonial"
+              className="image-viewer-image"
+            />
+          </div>
+
+          {/* Previous Arrow - Outside Modal */}
+          {selectedImageIndex > 0 && (
+            <button
+              className="image-viewer-arrow image-viewer-arrow-left"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage('prev');
+              }}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 18L9 12L15 6"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          )}
+
+          {/* Next Arrow - Outside Modal */}
+          {selectedImageIndex < testimonialsData.length - 1 && (
+            <button
+              className="image-viewer-arrow image-viewer-arrow-right"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage('next');
+              }}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 6L15 12L9 18"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
