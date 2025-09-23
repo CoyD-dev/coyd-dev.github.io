@@ -299,9 +299,11 @@ function App() {
                   const overlay = document.getElementById('videoOverlay');
                   if (video.paused) {
                     video.play();
+                    video.controls = true;
                     if (overlay) overlay.style.display = 'none';
                   } else {
                     video.pause();
+                    video.controls = false;
                     if (overlay) overlay.style.display = 'flex';
                   }
                 }}
@@ -330,6 +332,7 @@ function App() {
                   const video = document.getElementById('customVideo') as HTMLVideoElement;
                   const overlay = document.getElementById('videoOverlay');
                   video.play();
+                  video.controls = true;
                   if (overlay) overlay.style.display = 'none';
                 }}
               >
@@ -380,147 +383,246 @@ function App() {
         </div>
       </section>
 
-      {/* Value Propositions */}
-      <section className="py-20 bg-gradient-to-b from-gaming-dark to-gaming-blue">
+      {/* Benefits Section */}
+      <section className="py-20 bg-gaming-dark">
         <div className="container mx-auto px-4">
-          <h2 className="font-gaming text-4xl md:text-5xl font-bold text-white mb-16 text-center">
-            Why Choose <span className="text-gaming-gold text-glow">Rank Up Academy</span>?
-          </h2>
+          <div className="relative max-w-4xl mx-auto">
+            {/* Golden Vertical Line */}
+            <div style={{
+              position: "absolute",
+              left: "38px",
+              top: "0",
+              bottom: "0",
+              width: "4px",
+              backgroundColor: "#FCD305"
+            }}></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {[
-              { icon: '⏰', title: 'TIME', desc: 'Efficient coaching that respects your schedule' },
-              { icon: '🚀', title: 'POTENTIAL', desc: 'Unlock your true gaming potential with personalized strategies' },
-              { icon: '🧠', title: 'MINDSET', desc: 'Develop the champion mindset and game sense' },
-              { icon: '🎮', title: 'ACCESS', desc: 'Direct access to professional coaching and exclusive content' },
-              { icon: '👥', title: 'COMMUNITY', desc: 'Join a community of dedicated Overwatch 2 players' }
-            ].map((prop, index) => (
-              <div
-                key={prop.title}
-                className="card text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-6xl mb-4">{prop.icon}</div>
-                <h3 className="font-gaming text-2xl font-bold text-gaming-gold mb-4">{prop.title}</h3>
-                <p className="text-gray-300">{prop.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video Gallery */}
-      <section className="py-20 bg-gradient-to-b from-gaming-blue to-gaming-dark">
-        <div className="container mx-auto px-4">
-          <h2 className="font-gaming text-4xl md:text-5xl font-bold text-white mb-16 text-center">
-            <span className="text-gaming-gold text-glow">Success Stories</span> & Training Content
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: 'Tracer Positioning Masterclass', hero: 'Tracer', rank: 'GM → Top 500' },
-              { title: 'Ana Sleep Dart Predictions', hero: 'Ana', rank: 'Diamond → Master' },
-              { title: 'Reinhardt Mind Games', hero: 'Reinhardt', rank: 'Plat → Diamond' },
-              { title: 'Genji Blade Timing', hero: 'Genji', rank: 'Gold → Plat' }
-            ].map((video, index) => (
-              <div
-                key={index}
-                className="card animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-full h-48 bg-gradient-to-br from-gaming-gold to-primary-500 relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gaming-dark to-gaming-blue opacity-80"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-gaming-gold rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-gaming-dark ml-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M8 5v10l8-5-8-5z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="absolute top-2 left-2 bg-gaming-gold text-gaming-dark px-3 py-1 rounded-full text-sm font-bold">
-                    {video.hero}
-                  </div>
+            {/* Benefits List */}
+            <div style={{ paddingTop: "2rem" }}>
+              {/* Benefit 1: Time */}
+              <div className="flex items-start benefit-item">
+                {/* Circle Bullet */}
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "50%",
+                  flexShrink: "0",
+                  zIndex: "10",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img
+                    src="https://rankupacademy.gg/assets/clock-008571e5616a2d242587b0511825a0af4470159dece49abf6eb627c4a4357fcb.svg"
+                    alt="Clock icon"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      filter: "brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(447%) hue-rotate(177deg) brightness(95%) contrast(93%)"
+                    }}
+                  />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-gaming text-lg font-bold text-white mb-2">{video.title}</h3>
-                  <span className="text-gaming-gold font-medium text-sm">{video.rank}</span>
+
+                {/* Content */}
+                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
+                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                    TIME
+                  </h3>
+                  <p className="text-gray-300 text-xl leading-relaxed max-w-4xl">
+                    How many hours have you poured into the game without seeing the results you want? Break free from the cycle of stagnation and make every session count.
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-b from-gaming-dark to-gaming-blue">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-gaming text-4xl md:text-6xl font-bold text-white mb-6">
-            Ready to <span className="text-gaming-gold text-glow">RANK UP</span>?
-          </h2>
+              {/* Benefit 2: Potential */}
+              <div className="flex items-start benefit-item">
+                {/* Circle Bullet */}
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "50%",
+                  flexShrink: "0",
+                  zIndex: "10",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img
+                    src="https://rankupacademy.gg/assets/rocket-72815354ca136c3dec81c3193c0362b5afa50f4c387a3a652ff76be8a102d599.svg"
+                    alt="Rocket icon"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      filter: "brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(447%) hue-rotate(177deg) brightness(95%) contrast(93%)"
+                    }}
+                  />
+                </div>
 
-          {/* Pricing Card */}
-          <div className="max-w-lg mx-auto mb-16">
-            <div className="bg-gaming-blue bg-opacity-80 p-8 rounded-2xl border-2 border-gaming-gold gaming-glow">
-              <h3 className="font-gaming text-2xl font-bold text-gaming-gold mb-4">MONTHLY COACHING</h3>
-
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-white">$75</span>
-                <span className="text-gray-400 text-lg">/month</span>
+                {/* Content */}
+                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
+                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                    POTENTIAL
+                  </h3>
+                  <p className="text-gray-300 text-xl leading-relaxed max-w-4xl">
+                    Discover what's holding you back with personalized reviews from our top-ranked specialists. We don't just tell you what to improve; we guide you step-by-step on the path to success.
+                  </p>
+                </div>
               </div>
 
-              <ul className="text-left space-y-3 mb-8">
-                {[
-                  'Personalized monthly VOD reviews',
-                  'Step-by-step improvement guides',
-                  'Access to Top 500 coaches',
-                  'Community of dedicated players',
-                  'All ranks supported (Bronze to Top 500)',
-                  'Console and PC gameplay analysis'
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-center text-gray-300">
-                    <svg className="w-5 h-5 text-gaming-gold mr-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              {/* Benefit 3: Mindset */}
+              <div className="flex items-start benefit-item">
+                {/* Circle Bullet */}
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "50%",
+                  flexShrink: "0",
+                  zIndex: "10",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img
+                    src="https://rankupacademy.gg/assets/brain-b02a81b71c56197446386d01155e71e2ca8dc12b390cbb2517ebab578f721198.svg"
+                    alt="Brain icon"
+                    style={{
+                      width: "40px",
+                      height: "40px"
+                    }}
+                  />
+                </div>
 
-              <button className="w-full bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg font-gaming">
-                START YOUR JOURNEY NOW
-              </button>
+                {/* Content */}
+                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
+                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                    MINDSET
+                  </h3>
+                  <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Engage with Specialists and learn how they think and execute
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Witness noticeable improvement as fast as possible
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Master the simple fundamentals that set the best apart
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Benefit 4: Access */}
+              <div className="flex items-start benefit-item">
+                {/* Circle Bullet */}
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "50%",
+                  flexShrink: "0",
+                  zIndex: "10",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img
+                    src="https://rankupacademy.gg/assets/instructor-654cdaaf9027644d5c47c7b4d058a67979d923d57d03c2a7a9b194ed626af84b.svg"
+                    alt="Instructor icon"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      filter: "brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(447%) hue-rotate(177deg) brightness(95%) contrast(93%)"
+                    }}
+                  />
+                </div>
+
+                {/* Content */}
+                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
+                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                    ACCESS
+                  </h3>
+                  <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Connect with Specialists who, like you, started from the bottom and are now among the highest ranks
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Receive tailored feedback at every step of your journey
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Engage in conversation with the 0.01% of players
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Benefit 5: Community */}
+              <div className="flex items-start benefit-item">
+                {/* Circle Bullet */}
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "50%",
+                  flexShrink: "0",
+                  zIndex: "10",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img
+                    src="https://rankupacademy.gg/assets/community-f7e262d6759f90b85195517f4607ee40d8ae61ff34656e0eaa59beaee097df5c.svg"
+                    alt="Community icon"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      filter: "brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(447%) hue-rotate(177deg) brightness(95%) contrast(93%)"
+                    }}
+                  />
+                </div>
+
+                {/* Content */}
+                <div style={{ marginLeft: "2rem", paddingTop: "0.5rem" }}>
+                  <h3 className="font-gaming text-4xl font-bold text-white benefit-title uppercase tracking-wider">
+                    COMMUNITY
+                  </h3>
+                  <ul className="text-gray-300 text-xl leading-relaxed max-w-4xl space-y-3">
+                    <li className="flex items-start">
+                      <span className="mr-3 text-2xl" style={{ paddingTop: "0.125rem" }}>•</span>
+                      Connect with players who share your journey and understand the frustration of being stuck. Together, we elevate each other and celebrate the victories as you climb the ranks.
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      300+ on the same page as you
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Play alongside others who share the passion for improvement
+                    </li>
+                    <li className="flex items-center">
+                      <span className="mr-3 text-2xl">•</span>
+                      Win both in and out of the game and celebrate your Rank Ups
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              { number: '2,500+', label: 'Students Coached', icon: '👥' },
-              { number: '94%', label: 'Rank Improvement', icon: '📈' },
-              { number: '4.9/5', label: 'Student Rating', icon: '⭐' }
-            ].map((stat, index) => (
-              <div key={index} className="p-6 bg-gaming-blue bg-opacity-40 rounded-xl">
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="font-gaming text-3xl font-bold text-gaming-gold mb-2">{stat.number}</div>
-                <div className="text-gray-300">{stat.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gaming-dark border-t border-gaming-gold border-opacity-20 py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="font-gaming text-2xl font-bold text-gaming-gold mb-4">RANK UP ACADEMY</h3>
-          <p className="text-gray-400 mb-6">
-            Professional Overwatch 2 Coaching • Top 500 Instructors • Worldwide Access
-          </p>
-          <p className="text-gray-500 text-sm">
-            © 2024 Rank Up Academy. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

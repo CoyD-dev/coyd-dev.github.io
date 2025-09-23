@@ -213,7 +213,7 @@ nav a[href="/sign_up"]:hover {
 .mx-auto { margin-left: auto; margin-right: auto; }
 
 /* Spacing */
-.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.py-20 {  padding-bottom: 5rem; }
 .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
 .py-4 { padding-top: .5rem; padding-bottom: .5rem; }
 .pt-20 { padding-top: 5rem; }
@@ -578,4 +578,13 @@ nav a[href="/sign_up"]:hover {
   .video-section-grid {
     grid-template-columns: 1fr !important;
   }
+}
+
+/* Benefits Section */
+.benefit-item {
+  margin-bottom: 2rem;
+}
+
+.benefit-title {
+  margin-bottom: 1rem;
 }
