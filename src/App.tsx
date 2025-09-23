@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const lastScrollY = useRef(0);
 
   const handleMobileMenuToggle = () => {
     if (isMobileMenuOpen) {
@@ -23,6 +25,71 @@ function App() {
       setIsClosing(false);
     }, 300);
   };
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const isScrollingUp = currentScrollY < lastScrollY.current;
+          lastScrollY.current = currentScrollY;
+
+          if (isScrollingUp) {
+            // Check each benefit item to see if it should animate out
+            benefitRefs.current.forEach((ref) => {
+              if (ref) {
+                const rect = ref.getBoundingClientRect();
+                // Convert 15rem to pixels (assuming 1rem = 16px)
+                const fadeOutThreshold = 15 * 16; // 240px
+                const isApproachingHidden = rect.top > (window.innerHeight - fadeOutThreshold);
+
+                if (isApproachingHidden && ref.classList.contains('benefits-animate-in')) {
+                  ref.classList.remove('benefits-animate-in');
+                  ref.classList.add('benefits-animate-out');
+                }
+              }
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            target.classList.add('benefits-animate-in');
+            target.classList.remove('benefits-animate-out');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    // Add scroll listener for reverse animations
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Observe all benefit items
+    benefitRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      benefitRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gaming-dark text-white">
@@ -375,7 +442,7 @@ function App() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gaming-dark">
+      <section className="py-20 bg-gaming-dark benefits-section-container">
         <div className="container mx-auto px-4">
           <div className="relative max-w-4xl mx-auto">
             {/* Golden Vertical Line */}
@@ -391,7 +458,10 @@ function App() {
             {/* Benefits List */}
             <div style={{ paddingTop: "2rem" }}>
               {/* Benefit 1: Time */}
-              <div className="flex items-start benefit-item">
+              <div
+                ref={(el) => { benefitRefs.current[0] = el; }}
+                className="flex items-start benefit-item benefits-scroll-animation benefits-slide-from-right"
+              >
                 {/* Circle Bullet */}
                 <div className="benefit-circle" style={{
                   width: "80px",
@@ -428,7 +498,10 @@ function App() {
               </div>
 
               {/* Benefit 2: Potential */}
-              <div className="flex items-start benefit-item">
+              <div
+                ref={(el) => { benefitRefs.current[1] = el; }}
+                className="flex items-start benefit-item benefits-scroll-animation benefits-slide-from-left"
+              >
                 {/* Circle Bullet */}
                 <div className="benefit-circle" style={{
                   width: "80px",
@@ -465,7 +538,10 @@ function App() {
               </div>
 
               {/* Benefit 3: Mindset */}
-              <div className="flex items-start benefit-item">
+              <div
+                ref={(el) => { benefitRefs.current[2] = el; }}
+                className="flex items-start benefit-item benefits-scroll-animation benefits-slide-from-right"
+              >
                 {/* Circle Bullet */}
                 <div className="benefit-circle" style={{
                   width: "80px",
@@ -512,7 +588,10 @@ function App() {
               </div>
 
               {/* Benefit 4: Access */}
-              <div className="flex items-start benefit-item">
+              <div
+                ref={(el) => { benefitRefs.current[3] = el; }}
+                className="flex items-start benefit-item benefits-scroll-animation benefits-slide-from-left"
+              >
                 {/* Circle Bullet */}
                 <div className="benefit-circle" style={{
                   width: "80px",
@@ -560,7 +639,10 @@ function App() {
               </div>
 
               {/* Benefit 5: Community */}
-              <div className="flex items-start benefit-item">
+              <div
+                ref={(el) => { benefitRefs.current[4] = el; }}
+                className="flex items-start benefit-item benefits-scroll-animation benefits-slide-from-right"
+              >
                 {/* Circle Bullet */}
                 <div className="benefit-circle" style={{
                   width: "80px",

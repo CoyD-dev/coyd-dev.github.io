@@ -49,6 +49,25 @@ nav a.hover\\:scale-105:hover { transform: scale(1.05) !important; }
 
 /* Even more specific targeting for navigation buttons */
 nav .md-show-desktop:hover { transition: all 0.3s ease !important; }
+
+/* Ensure navigation stays fixed and visible */
+nav.fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  transform: none !important;
+}
+
+/* Fix navigation container positioning */
+nav .container {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
 nav a[href="/sign_in"]:hover {
   background-color: #FCD305 !important;
   color: #0a0f1c !important;
@@ -609,6 +628,15 @@ nav a[href="/sign_up"]:hover {
   .geometric-box {
     padding: 1.5rem 1rem !important;
     margin: 0.5rem !important;
+    text-align: center !important;
+  }
+
+  .geometric-box .flex {
+    justify-content: center !important;
+  }
+
+  .geometric-box .mb-8 p {
+    font-size: 0.875rem !important;
   }
 
   .hero-text-wrapper .text-lg {
@@ -684,5 +712,76 @@ nav a[href="/sign_up"]:hover {
 @media (max-width: 600px) {
   .video-section-padding {
     padding-bottom: 0rem;
+  }
+}
+
+/* Desktop geometric box adjustments */
+@media (min-width: 1124px) {
+  .geometric-box {
+    max-width: 34rem !important;
+    padding: 3rem 3.5rem !important;
+  }
+}
+
+/* Prevent horizontal overflow from benefit animations */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Benefits section container - prevent overflow */
+.benefits-section-container {
+  overflow-x: hidden;
+}
+
+/* Isolated benefit scroll animations - completely separate from other elements */
+.benefits-scroll-animation {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.benefits-scroll-animation.benefits-slide-from-left {
+  transform: translateX(-100px);
+}
+
+.benefits-scroll-animation.benefits-slide-from-right {
+  transform: translateX(100px);
+}
+
+.benefits-scroll-animation.benefits-animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.benefits-scroll-animation.benefits-animate-out.benefits-slide-from-left {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.benefits-scroll-animation.benefits-animate-out.benefits-slide-from-right {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+/* Keyframes for slide animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
