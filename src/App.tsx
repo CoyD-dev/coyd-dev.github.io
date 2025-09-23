@@ -103,13 +103,14 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Observe all benefit items
-    benefitRefs.current.forEach((ref) => {
+    const currentRefs = benefitRefs.current;
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      benefitRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
