@@ -365,7 +365,7 @@ nav a[href="/sign_up"]:hover {
   .lg\\:flex-row { flex-direction: row; }
   .lg\\:text-left { text-align: left; }
   .lg\\:text-7xl { font-size: 4.5rem; }
-  .lg\\:w-1\\/2 { width: 50%; }
+  .lg\\:w-1\/2 { width: 50%; }
   .lg\\:justify-start { justify-content: flex-start; }
   .lg\\:mx-0 { margin-left: 0; margin-right: 0; }
   .lg\\:mb-0 { margin-bottom: 0; }
