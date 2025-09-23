@@ -572,3 +572,10 @@ nav a[href="/sign_up"]:hover {
     background-position: center 10% !important;
   }
 }
+
+/* Video Section Mobile Layout */
+@media (max-width: 768px) {
+  .video-section-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
