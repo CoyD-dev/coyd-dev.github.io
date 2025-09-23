@@ -125,23 +125,50 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden hero-mobile-container">
         {/* Hero Background Image */}
         <div
-          className="absolute hero-bg-image"
+          className="hero-image-mobile hero-bg-image"
           style={{
-            backgroundImage: 'url(/assets/square_tracer-hero-image.jpg)'
+            backgroundImage: 'url(/assets/square_tracer-hero-image.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black opacity-40"></div>
+          {/* Dark overlay for text readability - only on desktop */}
+          <div className="absolute inset-0 hidden md:block" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}></div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10" style={{ paddingTop: '10rem' }}>
+        <div className="hero-content-mobile" style={{ paddingTop: '10rem' }}>
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
-            {/* Line 1: FROM GETTING CARRIED */}
+            <div className="max-w-3xl relative">
+              {/* Hero content wrapper that moves with the geometric box */}
+              <div className="hero-text-wrapper">
+                {/* Stylish geometric background - Option 1: Tilted Square */}
+                <div
+                  className="absolute geometric-box"
+                  style={{
+                    width: 'calc(100vw - 4rem)',
+                    maxWidth: '33rem',
+                    height: '23rem',
+                    margin: '0 0 0 1rem',
+                    background: 'linear-gradient(135deg, rgba(252, 211, 5, 0.15), rgba(252, 211, 5, 0.05))',
+                    borderRadius: '20px',
+                    top: '-50px',
+                    left: '-50px',
+                    border: '2px solid rgba(252, 211, 5, 0.3)',
+                    backdropFilter: 'blur(10px)',
+                    zIndex: -1
+                  }}
+                ></div>
+
+                {/* Alternative Option 2: Hexagon (uncomment to use instead) */}
+                {/* <div className="hero-hexagon"></div> */}
+
+                {/* Hero Text Content with margin for positioning within geometric shape */}
+                <div style={{ margin: '1rem', marginRight: '1rem' }}>
+              {/* Line 1: FROM GETTING CARRIED */}
             <div className="mb-4">
               <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
                 FROM GETTING CARRIED
@@ -187,7 +214,9 @@ function App() {
               </div>
             </div>
             </div>
+              </div>
           </div>
+        </div>
         </div>
 
         {/* Bottom Gradient Blur */}
