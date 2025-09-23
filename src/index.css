@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Quantico', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0a0f1c;
@@ -25,23 +25,24 @@ code {
 .bg-primary-600 { background-color: #2563eb; }
 .bg-gray-800 { background-color: #1f2937; }
 .bg-white { background-color: #ffffff; }
-.bg-gaming-gold { background-color: #fbbf24; }
+.bg-gaming-gold { background-color: #FCD305; }
 .bg-secondary-500 { background-color: #f59e0b; }
-.text-gaming-gold { color: #fbbf24; }
+.text-gaming-gold { color: #FCD305; }
 .text-gaming-dark { color: #0a0f1c; }
 .text-black { color: #000000; }
-.border-gaming-gold { border-color: #fbbf24; }
-.font-gaming { font-family: 'Orbitron', monospace; }
+.text-orange-500 { color: #f97316; }
+.border-gaming-gold { border-color: #FCD305; }
+.font-gaming { font-family: 'Quantico', sans-serif; }
 .no-underline { text-decoration: none; }
 
 /* Hover effects */
-.hover\\:bg-gaming-gold:hover { background-color: #fbbf24 !important; }
+.hover\\:bg-gaming-gold:hover { background-color: #FCD305 !important; }
 .hover\\:bg-secondary-500:hover { background-color: #f59e0b !important; }
 .hover\\:text-gaming-dark:hover { color: #0a0f1c !important; }
 .hover\\:scale-105:hover { transform: scale(1.05) !important; }
 
 /* Navigation specific hover effects with higher specificity */
-nav a.hover\\:bg-gaming-gold:hover { background-color: #fbbf24 !important; }
+nav a.hover\\:bg-gaming-gold:hover { background-color: #FCD305 !important; }
 nav a.hover\\:bg-secondary-500:hover { background-color: #f59e0b !important; }
 nav a.hover\\:text-gaming-dark:hover { color: #0a0f1c !important; }
 nav a.hover\\:scale-105:hover { transform: scale(1.05) !important; }
@@ -49,7 +50,7 @@ nav a.hover\\:scale-105:hover { transform: scale(1.05) !important; }
 /* Even more specific targeting for navigation buttons */
 nav .md-show-desktop:hover { transition: all 0.3s ease !important; }
 nav a[href="/sign_in"]:hover {
-  background-color: #fbbf24 !important;
+  background-color: #FCD305 !important;
   color: #0a0f1c !important;
 }
 nav a[href="/sign_up"]:hover {
@@ -66,6 +67,46 @@ nav a[href="/sign_up"]:hover {
 .top-4 { top: 1rem; }
 .right-4 { right: 1rem; }
 .p-3 { padding: 0.75rem; }
+
+/* Hero section enhancements */
+.hero-bg-image {
+  background-size: cover !important;
+  background-position: center 20% !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+}
+
+@media (max-width: 768px) {
+  .hero-bg-image {
+    background-attachment: scroll;
+  }
+}
+
+/* Better gradient opacity support */
+.bg-gaming-dark\/80 {
+  background-color: rgba(10, 15, 28, 0.8);
+}
+
+/* Line gradient effects */
+.line-gradient-gold {
+  background: linear-gradient(90deg, transparent 0%, #FCD305 50%, transparent 100%);
+}
+
+/* Hero content positioning */
+.hero-content-padding {
+  padding-top: 5rem;
+  padding-left: 5rem;
+}
+
+/* Hero section positioning */
+.hero-section {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
 
 /* Mobile menu slide animations */
 .mobile-menu-enter {
@@ -84,12 +125,14 @@ nav a[href="/sign_up"]:hover {
 .mobile-menu-exit {
   transform: translateX(0);
   opacity: 1;
+  background-color: rgb(26, 31, 58) !important;
 }
 
 .mobile-menu-exit-active {
   transform: translateX(100%);
-  opacity: 0;
-  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  opacity: 1;
+  background-color: rgb(26, 31, 58) !important;
+  transition: transform 0.3s ease-in;
 }
 
 .hero-gradient {
@@ -158,7 +201,7 @@ nav a[href="/sign_up"]:hover {
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .pt-20 { padding-top: 5rem; }
 .px-4 { padding-left: 1rem; padding-right: 1rem; }
-.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
 .p-6 { padding: 1.5rem; }
 .p-8 { padding: 2rem; }
 .mb-4 { margin-bottom: 1rem; }
@@ -197,7 +240,7 @@ nav a[href="/sign_up"]:hover {
 }
 
 .btn-primary {
-  background-color: #fbbf24;
+  background-color: #FCD305;
   color: #0a0f1c;
 }
 
@@ -207,13 +250,13 @@ nav a[href="/sign_up"]:hover {
 }
 
 .btn-secondary {
-  border: 2px solid #fbbf24;
-  color: #fbbf24;
+  border: 2px solid #FCD305;
+  color: #FCD305;
   background: transparent;
 }
 
 .btn-secondary:hover {
-  background-color: #fbbf24;
+  background-color: #FCD305;
   color: #0a0f1c;
 }
 
@@ -244,7 +287,7 @@ nav a[href="/sign_up"]:hover {
 .video-thumbnail {
   width: 100%;
   height: 12rem;
-  background: linear-gradient(135deg, #fbbf24, #2563eb);
+  background: linear-gradient(135deg, #FCD305, #2563eb);
   position: relative;
   border-radius: 0.75rem 0.75rem 0 0;
   overflow: hidden;
@@ -257,7 +300,7 @@ nav a[href="/sign_up"]:hover {
   transform: translate(-50%, -50%);
   width: 4rem;
   height: 4rem;
-  background-color: #fbbf24;
+  background-color: #FCD305;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -320,7 +363,7 @@ nav a[href="/sign_up"]:hover {
 .trophy {
   width: 6rem;
   height: 8rem;
-  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  background: linear-gradient(to bottom, #FCD305, #f59e0b);
   border-radius: 50% 50% 0 0;
   position: relative;
 }
@@ -332,7 +375,7 @@ nav a[href="/sign_up"]:hover {
   left: 0;
   right: 0;
   height: 1.5rem;
-  background-color: #fbbf24;
+  background-color: #FCD305;
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
@@ -376,7 +419,7 @@ nav a[href="/sign_up"]:hover {
 .feature-list .checkmark {
   width: 1.25rem;
   height: 1.25rem;
-  color: #fbbf24;
+  color: #FCD305;
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
@@ -388,7 +431,7 @@ nav a[href="/sign_up"]:hover {
 .space-y-8 > * + * { margin-top: 2rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
 .transition-colors { transition: color 0.2s ease; }
-.h-10 { height: 2.5rem; }
+.h-10 { height: 3.5rem; }
 .w-6 { width: 1.5rem; }
 .h-6 { height: 1.5rem; }
 .w-auto { width: auto; }
@@ -397,7 +440,7 @@ nav a[href="/sign_up"]:hover {
 .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
 .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
 .p-2 { padding: 0.5rem; }
 .hidden { display: none; }
 .z-40 { z-index: 40; }

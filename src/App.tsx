@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleMobileMenuToggle = () => {
     if (isMobileMenuOpen) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setIsMobileMenuOpen(false);
-        setIsAnimating(false);
-      }, 300);
+      closeMobileMenu();
     } else {
       setIsMobileMenuOpen(true);
+      setIsClosing(false);
       setTimeout(() => setIsAnimating(true), 10);
     }
   };
 
   const closeMobileMenu = () => {
-    setIsAnimating(true);
+    setIsClosing(true);
+    setIsAnimating(false);
     setTimeout(() => {
       setIsMobileMenuOpen(false);
-      setIsAnimating(false);
+      setIsClosing(false);
     }, 300);
   };
 
@@ -41,18 +40,18 @@ function App() {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-300 hover:text-gaming-gold transition-colors">Home</a>
-            <a href="#about" className="text-gray-300 hover:text-gaming-gold transition-colors">About</a>
-            <a href="#services" className="text-gray-300 hover:text-gaming-gold transition-colors">Services</a>
-            <a href="#testimonials" className="text-gray-300 hover:text-gaming-gold transition-colors">Testimonials</a>
-            <a href="#contact" className="text-gray-300 hover:text-gaming-gold transition-colors">Contact</a>
+            <a href="#home" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Home</a>
+            <a href="#about" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">About</a>
+            <a href="#services" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Services</a>
+            <a href="#testimonials" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Testimonials</a>
+            <a href="#contact" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Contact</a>
           </div>
 
           <div className="flex items-center space-x-4">
-            <a href="/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline">
+            <a href="/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
               Log In
             </a>
-            <a href="/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline">
+            <a href="/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
               Get Started
             </a>
 
@@ -77,7 +76,13 @@ function App() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className={`md:hidden fixed inset-0 z-60 ${isAnimating ? 'mobile-menu-enter-active' : 'mobile-menu-enter'}`}
+          className={`md:hidden fixed inset-0 z-60 ${
+            isClosing
+              ? 'mobile-menu-exit-active'
+              : isAnimating
+                ? 'mobile-menu-enter-active'
+                : 'mobile-menu-enter'
+          }`}
           style={{ backgroundColor: 'rgb(26, 31, 58)' }}
         >
           {/* Close button */}
@@ -92,27 +97,27 @@ function App() {
 
           <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
             <div className="flex flex-col space-y-4">
-              <a href="/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline" onClick={closeMobileMenu}>
+              <a href="/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Get Started
               </a>
-              <a href="/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline" onClick={closeMobileMenu}>
+              <a href="/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Log In
               </a>
             </div>
 
-            <a href="#home" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+            <a href="#home" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Home
             </a>
-            <a href="#about" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+            <a href="#about" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               About
             </a>
-            <a href="#services" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+            <a href="#services" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Services
             </a>
-            <a href="#testimonials" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+            <a href="#testimonials" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Testimonials
             </a>
-            <a href="#contact" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors" onClick={closeMobileMenu}>
+            <a href="#contact" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Contact
             </a>
           </div>
@@ -120,55 +125,93 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen hero-gradient overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-gaming-dark via-gaming-blue to-primary-600 opacity-90"></div>
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Hero Background Image */}
+        <div
+          className="absolute hero-bg-image"
+          style={{
+            backgroundImage: 'url(/assets/square_tracer-hero-image.jpg)'
+          }}
+        >
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black opacity-40"></div>
+        </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center justify-between min-h-screen">
-          <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0 animate-fade-in">
-            <h1 className="font-gaming text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              <span className="text-gaming-gold text-glow">RANK UP</span>
-              <br />
-              <span className="text-white">ACADEMY</span>
-            </h1>
+        {/* Hero Content */}
+        <div className="relative z-10" style={{ paddingTop: '10rem' }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+            {/* Line 1: FROM GETTING CARRIED */}
+            <div className="mb-4">
+              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
+                FROM GETTING CARRIED
+              </span>
+            </div>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 font-medium">
-              From <span className="text-gaming-gold font-bold">GETTING CARRIED</span> to <span className="text-gaming-gold font-bold">BEING THE CARRY</span>
-            </p>
+            {/* Line 2: TO BEING THE CARRY */}
+            <div className="mb-6">
+              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
+                TO BEING{' '}
+              </span>
+              <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500">
+                THE CARRY
+              </span>
+            </div>
 
-            <p className="text-lg text-gray-400 mb-10 max-w-lg mx-auto lg:mx-0">
-              Master Overwatch 2 with personalized coaching from Top 500 players.
-              Perfect your gameplay with heroes like Tracer, Genji, Ana, and Reinhardt.
-            </p>
+            {/* Line 3: WE WILL TEACH YOU HOW TO RANK UP */}
+            <div className="mb-8">
+              <p className="font-gaming text-gaming-gold" style={{ fontSize: '1.25rem', fontWeight: '100' }}>
+                WE WILL TEACH YOU HOW TO RANK UP
+              </p>
+            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow">
-                START YOUR JOURNEY
+            {/* Line 4: Button and Limited Slots */}
+            <div className="flex items-center gap-6">
+              {/* Column 1: START NOW Button */}
+              <button className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming">
+                START NOW
               </button>
-              <button className="border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300">
-                WATCH DEMO
-              </button>
+
+              {/* Column 2: LIMITED SLOTS AVAILABLE */}
+              <div className="rounded-lg" style={{
+                border: '1px solid #FCD305',
+                marginLeft: '1rem',
+                paddingLeft: '1rem',
+                paddingRight: '1rem',
+                paddingTop: '0.25rem',
+                paddingBottom: '0.25rem'
+              }}>
+                <span className="text-gaming-gold font-bold text-lg font-gaming">
+                  LIMITED SLOTS AVAILABLE
+                </span>
+              </div>
+            </div>
             </div>
           </div>
+        </div>
 
-          <div className="lg:w-1/2 relative animate-fade-in">
-            {/* Trophy */}
-            <div className="absolute top-0 right-0 lg:right-20 z-20">
-              <div className="w-24 h-32 md:w-32 md:h-40 bg-gradient-to-b from-gaming-gold to-secondary-500 rounded-t-full relative gaming-glow">
-                <div className="absolute inset-2 bg-gradient-to-b from-yellow-300 to-gaming-gold rounded-t-full"></div>
-                <div className="absolute bottom-0 w-full h-6 bg-gaming-gold rounded-b-lg"></div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-gray-700 rounded"></div>
-              </div>
-            </div>
+        {/* Bottom Gradient Blur */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gaming-dark via-gaming-dark/80 to-transparent"></div>
 
-            {/* Gaming Character */}
-            <div className="relative z-10 flex justify-center">
-              <div className="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-b from-primary-600 to-gaming-blue rounded-lg relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-gaming-dark via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-48 bg-gaming-gold opacity-20 rounded-t-full"></div>
-                <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gaming-gold rounded-full opacity-60"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-24 h-32 bg-primary-500 opacity-40 rounded"></div>
-                <div className="absolute bottom-20 right-8 w-4 h-20 bg-gaming-gold rounded transform rotate-12"></div>
+        {/* Bottom Branding Section */}
+        <div className="absolute bottom-8 left-0 right-0 z-20">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-center">
+              {/* Left Line */}
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gaming-gold"></div>
+
+              {/* Center Text */}
+              <div className="px-8 text-center">
+                <h2 className="font-gaming text-2xl md:text-3xl font-bold text-gaming-gold mb-1">
+                  RANK UP ACADEMY
+                </h2>
+                <p className="text-white text-sm font-medium">
+                  WHERE YOUR IMPROVEMENT BEGINS
+                </p>
               </div>
+
+              {/* Right Line */}
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gaming-gold"></div>
             </div>
           </div>
         </div>
@@ -280,7 +323,7 @@ function App() {
                 ))}
               </ul>
 
-              <button className="w-full bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg">
+              <button className="w-full bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg font-gaming">
                 START YOUR JOURNEY NOW
               </button>
             </div>
