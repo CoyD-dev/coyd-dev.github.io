@@ -11,7 +11,7 @@ body {
   font-family: 'Quantico', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0f1c;
+  background-color: #1A1A1A;
   color: #ffffff;
 }
 
@@ -20,7 +20,7 @@ code {
 }
 
 /* Custom Gaming Theme Classes */
-.bg-gaming-dark { background-color: #0a0f1c; }
+.bg-gaming-dark { background-color: #1A1A1A; }
 .bg-gaming-blue { background-color: #1a1f3a; }
 .bg-primary-600 { background-color: #2563eb; }
 .bg-gray-800 { background-color: #1f2937; }
@@ -207,13 +207,15 @@ nav a[href="/sign_up"]:hover {
 /* Sizing */
 .w-full { width: 100%; }
 .h-full { height: 100%; }
+.h-0\.5 { height: 0.125rem; }
+.h-1 { height: 0.25rem; }
 .max-w-lg { max-width: 32rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 
 /* Spacing */
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-4 { padding-top: .5rem; padding-bottom: .5rem; }
 .pt-20 { padding-top: 5rem; }
 .px-4 { padding-left: 1rem; padding-right: 1rem; }
 .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -480,7 +482,7 @@ nav a[href="/sign_up"]:hover {
   left: 0;
   right: 0;
   height: 3rem;
-  background: linear-gradient(to bottom, #0a0f1c, transparent);
+  background: linear-gradient(to bottom, #1A1A1A, transparent);
   z-index: 1;
   pointer-events: none;
 }
@@ -491,8 +493,8 @@ nav a[href="/sign_up"]:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 3rem;
-  background: linear-gradient(to top, #0a0f1c, transparent);
+  height: 8rem;
+  background: linear-gradient(to top, #1A1A1A, transparent);
   z-index: 1;
   pointer-events: none;
 }

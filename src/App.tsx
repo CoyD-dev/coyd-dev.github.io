@@ -28,7 +28,9 @@ function App() {
     <div className="min-h-screen bg-gaming-dark text-white">
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-95 backdrop-blur-sm border-b border-gaming-gold border-opacity-20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gaming-dark backdrop-blur-sm" style={{
+        boxShadow: '0 8px 32px rgba(26, 26, 26, 0.8), 0 4px 16px rgba(26, 26, 26, 0.4)'
+      }}>
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img
@@ -48,10 +50,10 @@ function App() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <a href="/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
+            <a href="https://rankupacademy.gg/users/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
               Log In
             </a>
-            <a href="/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
+            <a href="https://rankupacademy.gg/users/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
               Get Started
             </a>
 
@@ -97,10 +99,10 @@ function App() {
 
           <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
             <div className="flex flex-col space-y-4">
-              <a href="/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
+              <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Get Started
               </a>
-              <a href="/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
+              <a href="https://rankupacademy.gg/users/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Log In
               </a>
             </div>
@@ -195,9 +197,9 @@ function App() {
             {/* Line 4: Button and Limited Slots */}
             <div className="flex items-center gap-6">
               {/* Column 1: START NOW Button */}
-              <button className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming">
+              <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
                 START NOW
-              </button>
+              </a>
 
               {/* Column 2: LIMITED SLOTS AVAILABLE */}
               <div className="rounded-lg" style={{
@@ -222,28 +224,56 @@ function App() {
         {/* Bottom Gradient Blur */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gaming-dark via-gaming-dark/80 to-transparent"></div>
 
-        {/* Bottom Branding Section */}
-        <div className="absolute bottom-8 left-0 right-0 z-20">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-center">
-              {/* Left Line */}
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gaming-gold"></div>
+      </section>
 
-              {/* Center Text */}
-              <div className="px-8 text-center">
-                <h2 className="font-gaming text-2xl md:text-3xl font-bold text-gaming-gold mb-1">
-                  RANK UP ACADEMY
-                </h2>
-                <p className="text-white text-sm font-medium">
-                  WHERE YOUR IMPROVEMENT BEGINS
-                </p>
-              </div>
+      {/* Rank Up Academy Branding Section */}
+      <section style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        backgroundColor: "#1A1A1A",
+        padding: "48px 0"
+      }}>
+        {/* Left Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
 
-              {/* Right Line */}
-              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gaming-gold"></div>
-            </div>
-          </div>
+        {/* Center Text */}
+        <div style={{
+          textAlign: "center",
+          margin: "0 40px",
+          color: "#FCD305"
+        }}>
+          <h2 className="font-gaming" style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            marginBottom: "8px",
+            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
+          }}>
+            RANK UP ACADEMY
+          </h2>
+          <p style={{
+            fontSize: "0.875rem",
+            fontWeight: "600",
+            color: "#FCD305",
+            letterSpacing: "3px",
+            opacity: "0.9"
+          }}>
+            WHERE YOUR IMPROVEMENT BEGINS
+          </p>
         </div>
+
+        {/* Right Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
       </section>
 
       {/* Value Propositions */}
