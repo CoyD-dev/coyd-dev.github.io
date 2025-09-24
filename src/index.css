@@ -1043,3 +1043,127 @@ section[id] {
 footer[id] {
   scroll-margin-top: 5rem;
 }
+
+/* Cookie Consent Banner Styles */
+.cookie-consent-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, transparent 100%);
+  backdrop-filter: blur(10px);
+  padding: 0 1rem 1rem 1rem;
+  animation: slideInFromBottom 0.5s ease-out;
+}
+
+.cookie-consent-banner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(49, 51, 56, 0.95);
+  border: 1px solid #FCD305;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(252, 211, 5, 0.2);
+  backdrop-filter: blur(15px);
+}
+
+.cookie-consent-content {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cookie-consent-text {
+  flex: 1;
+}
+
+.cookie-consent-title {
+  color: #FCD305;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 1px;
+}
+
+.cookie-consent-description {
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.cookie-consent-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cookie-reject-btn, .cookie-accept-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.cookie-reject-btn {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cookie-reject-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.cookie-accept-btn {
+  background: #FCD305;
+  color: #000000;
+  border-color: #FCD305;
+  box-shadow: 0 4px 12px rgba(252, 211, 5, 0.3);
+}
+
+.cookie-accept-btn:hover {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(252, 211, 5, 0.4);
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive cookie banner */
+@media (max-width: 768px) {
+  .cookie-consent-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .cookie-consent-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cookie-reject-btn, .cookie-accept-btn {
+    flex: 1;
+    max-width: 150px;
+  }
+}

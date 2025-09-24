@@ -8,6 +8,7 @@ function App() {
   const [showAllGallery, setShowAllGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [openAccordionIndices, setOpenAccordionIndices] = useState<number[]>([0]);
+  const [cookieConsent, setCookieConsent] = useState<'pending' | 'accepted' | 'rejected'>('pending');
   const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollY = useRef(0);
 
@@ -59,6 +60,27 @@ function App() {
     );
   };
 
+  const handleCookieConsent = (consent: 'accepted' | 'rejected') => {
+    setCookieConsent(consent);
+    localStorage.setItem('cookieConsent', consent);
+
+    if (consent === 'accepted') {
+      // Enable Google Analytics
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    } else {
+      // Disable Google Analytics
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+      }
+    }
+  };
+
   const faqData = [
     {
       question: "AM I GUARANTEED TO RANK UP?",
@@ -85,6 +107,23 @@ function App() {
       answer: "WITHOUT A DOUBT. RANK UP ACADEMY COVERS SIMPLE AND PRACTICAL FUNDAMENTALS FOR EVERY HERO."
     }
   ];
+
+  // Check for existing cookie consent on component mount
+  useEffect(() => {
+    const savedConsent = localStorage.getItem('cookieConsent') as 'accepted' | 'rejected' | null;
+    if (savedConsent) {
+      setCookieConsent(savedConsent);
+
+      if (savedConsent === 'accepted') {
+        // Enable Google Analytics if consent was previously given
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+        }
+      }
+    }
+  }, []);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -1362,6 +1401,37 @@ function App() {
               </svg>
             </button>
           )}
+        </div>
+      )}
+
+      {/* Cookie Consent Banner */}
+      {cookieConsent === 'pending' && (
+        <div className="cookie-consent-overlay">
+          <div className="cookie-consent-banner">
+            <div className="cookie-consent-content">
+              <div className="cookie-consent-text">
+                <h4 className="font-gaming cookie-consent-title">WE USE COOKIES</h4>
+                <p className="cookie-consent-description">
+                  We use cookies and similar technologies to improve your experience, analyze website traffic, and personalize content.
+                  By clicking "Accept All", you consent to our use of cookies for analytics and marketing purposes.
+                </p>
+              </div>
+              <div className="cookie-consent-buttons">
+                <button
+                  onClick={() => handleCookieConsent('rejected')}
+                  className="cookie-reject-btn font-gaming"
+                >
+                  REJECT
+                </button>
+                <button
+                  onClick={() => handleCookieConsent('accepted')}
+                  className="cookie-accept-btn font-gaming"
+                >
+                  ACCEPT ALL
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
