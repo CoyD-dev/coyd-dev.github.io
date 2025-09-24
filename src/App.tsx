@@ -764,7 +764,7 @@ function App() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-20 bg-gaming-dark">
+      <section className="bg-gaming-dark">
         <div className="container mx-auto px-4">
           <div className="gallery-container">
             {/* Gallery Grid */}
@@ -811,6 +811,280 @@ function App() {
               </svg>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Choice Section */}
+      <section style={{
+        backgroundColor: "#1a1a1a",
+        padding: "4rem 0",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        {/* Left Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to left, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
+
+        {/* Choice Text */}
+        <div style={{
+          textAlign: "center",
+          margin: "0 40px",
+          color: "#FCD305"
+        }}>
+          <h2 className="font-gaming" style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            marginBottom: "8px",
+            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
+          }}>
+            IT IS YOUR CHOICE
+          </h2>
+          <p style={{
+            fontSize: "0.875rem",
+            fontWeight: "600",
+            color: "#FCD305",
+            letterSpacing: "3px",
+            opacity: "0.9"
+          }}>
+            INSTEAD OF HITTING QUEUE AGAIN, ACT TO IMPROVE
+          </p>
+        </div>
+
+        {/* Right Line */}
+        <div style={{
+          flex: 1,
+          height: "2px",
+          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
+        }}></div>
+      </section>
+
+      {/* Three Column Hero Section */}
+      <section style={{
+        backgroundColor: "#1a1a1a",
+        padding: "0",
+        height: "50vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
+          width: "100%",
+          height: "100%"
+        }}>
+          {/* Left Column - Zenyatta with fade from left */}
+          <div style={{
+            padding: "1rem 0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            <div style={{
+              position: "relative",
+              backgroundImage: "url('/zenyatta.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "right center",
+              backgroundRepeat: "no-repeat",
+              width: "100%",
+              height: "50vh"
+            }}>
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "linear-gradient(to right, rgba(26, 26, 26, 0.8) 0%, transparent 100%)"
+              }}></div>
+            </div>
+          </div>
+
+          {/* Center Column - Fixed width yellow box */}
+          <div style={{
+            width: "25rem",
+            height: "calc(100% + 2rem)",
+            backgroundColor: "#FCD305",
+            border: "5px solid #313338",
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            zIndex: 10,
+            position: "relative",
+            top: "-1rem"
+          }}>
+              <div style={{
+                padding: "4rem 2rem 1rem 2rem",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start"
+              }}>
+                {/* Title */}
+                <h2 className="font-gaming" style={{
+                  color: "#000000",
+                  textAlign: "center",
+                  fontSize: "2rem",
+                  fontWeight: "900",
+                  marginBottom: "1.5rem",
+                  letterSpacing: "1px"
+                }}>
+                  $75 / MONTH
+                </h2>
+
+                {/* Bullet List */}
+                <ul style={{
+                  color: "#000000",
+                  textAlign: "justify",
+                  fontSize: "0.9rem",
+                  fontWeight: "600",
+                  lineHeight: "1.6",
+                  listStyle: "none",
+                  padding: "0",
+                  margin: "0"
+                }}>
+                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    PERSONALIZED MONTHLY VOD REVIEW
+                  </li>
+                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    ACCESS TO SIMPLE STEP BY STEP GUIDES
+                  </li>
+                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    JOIN A LIKE-MINDED COMMUNITY
+                  </li>
+                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    RECEIVE TAILORED FEEDBACK
+                  </li>
+                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    CANCEL ANYTIME, RISK-FREE
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start" }}>
+                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                    HUNDREDS OF CLASSES AVAILABLE
+                  </li>
+                </ul>
+              </div>
+          </div>
+
+          {/* Right Column - Ana with gradient transparent to right */}
+          <div style={{
+            padding: "1rem 0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            <div style={{
+              position: "relative",
+              backgroundImage: "url('/ana.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "left center",
+              backgroundRepeat: "no-repeat",
+              width: "100%",
+              height: "50vh"
+            }}>
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "linear-gradient(to right, transparent 0%, rgba(26, 26, 26, 0.8) 100%)"
+              }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section style={{
+        backgroundColor: "#1a1a1a",
+        padding: "3rem 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center"
+      }}>
+        {/* Button */}
+        <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline" style={{
+          marginBottom: "0.5rem",
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+          borderRadius: "5px"
+        }}>
+          JOIN RANK UP ACADEMY
+        </a>
+
+        {/* Text Lines */}
+        <div style={{
+          color: "#FCD305",
+          fontWeight: "200",
+          letterSpacing: "1px"
+        }}>
+          <p className="font-gaming" style={{
+            fontSize: "0.9rem",
+            margin: "0.5rem 0",
+            textTransform: "uppercase"
+          }}>
+            NUMBERS ARE LIMITED, SECURE YOUR
+          </p>
+          <p className="font-gaming" style={{
+            fontSize: "0.9rem",
+            margin: "0.5rem 0",
+            textTransform: "uppercase"
+          }}>
+            SPOT AT THIS LOCKED-IN PRICE FAST.
+          </p>
+        </div>
+      </section>
+
+      {/* Full-width Alternative Text Section */}
+      <section style={{
+        backgroundColor: "#1a1a1a",
+        padding: "0rem 2rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        width: "100%"
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          width: "100%"
+        }}>
+          <p className="font-gaming" style={{
+            fontSize: "2.5rem",
+            fontWeight: "bold",
+            color: "#FCD305",
+            margin: "0",
+            lineHeight: "1.2",
+            letterSpacing: "1px"
+          }}>
+            OR CONTINUE WASTING HUNDREDS OF HOURS GRINDING
+          </p>
+          <p className="font-gaming" style={{
+            fontSize: "2.5rem",
+            fontWeight: "bold",
+            color: "#FC4F05",
+            margin: "0.5rem 0 0 0",
+            lineHeight: "1.2",
+            letterSpacing: "1px"
+          }}>
+            WITHOUT PROGRESS
+          </p>
         </div>
       </section>
 
