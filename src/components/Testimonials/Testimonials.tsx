@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { BrandedSectionTitle } from '../Shared';
 import testimonialsData from '../../testemonials.json';
 import styles from './Testimonials.module.css';
 
@@ -72,12 +71,6 @@ const Testimonials: React.FC<TestimonialsProps> = ({
 
   return (
     <div ref={sectionRef}>
-      {/* Testimonials Section */}
-      <BrandedSectionTitle
-        id="testimonials"
-        title="TESTIMONIALS"
-      />
-
       {/* Gallery Section */}
       <section className="bg-gaming-dark">
         <div className="container mx-auto px-4">
