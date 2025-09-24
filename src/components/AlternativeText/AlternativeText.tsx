@@ -1,23 +1,11 @@
 import React from 'react';
 import { AlternativeMessage } from './AlternativeMessage';
+import styles from './AlternativeText.module.css';
 
 export function AlternativeText() {
   return (
-    <section style={{
-      backgroundColor: "#1a1a1a",
-      padding: "2rem 2rem 3rem 2rem",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      textAlign: "center",
-      width: "100%",
-      boxSizing: "border-box"
-    }}>
-      <div style={{
-        maxWidth: "1200px",
-        width: "100%"
-      }}>
+    <section className={styles.alternativeTextSection}>
+      <div className={styles.alternativeTextContainer}>
         <AlternativeMessage />
       </div>
     </section>

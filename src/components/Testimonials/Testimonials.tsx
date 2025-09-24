@@ -54,7 +54,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
       setTimeout(() => {
         if (sectionRef.current) {
           const elementTop = sectionRef.current.offsetTop;
-          const navbarHeight = 80; // Navbar height with extra padding
+          const navbarHeight = 120; // Navbar height with extra padding
           const scrollToPosition = elementTop - navbarHeight;
 
           window.scrollTo({

@@ -1,26 +1,13 @@
 import React from 'react';
+import styles from './AlternativeText.module.css';
 
 export function AlternativeMessage() {
   return (
     <>
-      <p className="font-gaming" style={{
-        fontSize: "1.8rem",
-        fontWeight: "bold",
-        color: "#FCD305",
-        margin: "0",
-        lineHeight: "1.2",
-        letterSpacing: "1px"
-      }}>
+      <p className={`font-gaming ${styles.alternativeMessagePrimary}`}>
         OR CONTINUE WASTING HUNDREDS OF HOURS GRINDING
       </p>
-      <p className="font-gaming" style={{
-        fontSize: "1.8rem",
-        fontWeight: "bold",
-        color: "#FC4F05",
-        margin: "0.5rem 0 0 0",
-        lineHeight: "1.2",
-        letterSpacing: "1px"
-      }}>
+      <p className={`font-gaming ${styles.alternativeMessageSecondary}`}>
         WITHOUT PROGRESS
       </p>
     </>

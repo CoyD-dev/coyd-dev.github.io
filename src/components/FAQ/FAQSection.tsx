@@ -1,6 +1,7 @@
 import React from 'react';
 import { FAQItem as FAQItemComponent } from './FAQItem';
 import { FAQItem } from './faqData';
+import styles from './FAQ.module.css';
 
 interface FAQSectionProps {
   faqData: FAQItem[];
@@ -10,20 +11,8 @@ interface FAQSectionProps {
 
 export function FAQSection({ faqData, openAccordionIndices, toggleAccordion }: FAQSectionProps) {
   return (
-    <section id="faq" style={{
-      backgroundColor: "#1a1a1a",
-      padding: "0 2rem 1rem 2rem",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100%",
-      boxSizing: "border-box"
-    }}>
-      <div style={{
-        maxWidth: "800px",
-        width: "100%"
-      }}>
+    <section id="faq" className={styles.faqSection}>
+      <div className={styles.faqContainer}>
         {faqData.map((faq, index) => (
           <FAQItemComponent
             key={index}

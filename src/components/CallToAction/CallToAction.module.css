@@ -1,0 +1,28 @@
+.callToActionSection {
+  background-color: #1a1a1a;
+  padding: 3rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ctaButton {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.ctaMessageContainer {
+  color: #FCD305;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.ctaMessageText {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+}

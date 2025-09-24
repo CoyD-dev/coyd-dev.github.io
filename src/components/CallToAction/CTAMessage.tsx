@@ -1,24 +1,13 @@
 import React from 'react';
+import styles from './CallToAction.module.css';
 
 export function CTAMessage() {
   return (
-    <div style={{
-      color: "#FCD305",
-      fontWeight: "200",
-      letterSpacing: "1px"
-    }}>
-      <p className="font-gaming" style={{
-        fontSize: "0.9rem",
-        margin: "0.5rem 0",
-        textTransform: "uppercase"
-      }}>
+    <div className={styles.ctaMessageContainer}>
+      <p className={`font-gaming ${styles.ctaMessageText}`}>
         NUMBERS ARE LIMITED, SECURE YOUR
       </p>
-      <p className="font-gaming" style={{
-        fontSize: "0.9rem",
-        margin: "0.5rem 0",
-        textTransform: "uppercase"
-      }}>
+      <p className={`font-gaming ${styles.ctaMessageText}`}>
         SPOT AT THIS LOCKED-IN PRICE FAST.
       </p>
     </div>

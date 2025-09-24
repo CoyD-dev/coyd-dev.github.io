@@ -2,6 +2,7 @@ import React from 'react';
 import { FAQQuestion } from './FAQQuestion';
 import { FAQAnswer } from './FAQAnswer';
 import { FAQItem as FAQItemData } from './faqData';
+import styles from './FAQ.module.css';
 
 interface FAQItemProps {
   faq: FAQItemData;
@@ -12,7 +13,7 @@ interface FAQItemProps {
 
 export function FAQItem({ faq, index, isOpen, onToggle }: FAQItemProps) {
   return (
-    <div style={{ marginBottom: "1rem" }}>
+    <div className={styles.faqItem}>
       <FAQQuestion
         question={faq.question}
         isOpen={isOpen}
