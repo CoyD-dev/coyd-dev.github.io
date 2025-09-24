@@ -1,0 +1,35 @@
+/* Navigation Styles */
+.navShadow {
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.8), 0 4px 16px rgba(26, 26, 26, 0.4);
+}
+
+.mobileMenuOverlay {
+  background-color: #1A1A1A;
+}
+
+/* Mobile menu slide animations */
+.mobileMenuEnter {
+  transform: translateX(100%);
+  opacity: 1;
+  background-color: #1A1A1A !important;
+}
+
+.mobileMenuEnterActive {
+  transform: translateX(0);
+  opacity: 1;
+  background-color: #1A1A1A !important;
+  transition: transform 0.3s ease-out;
+}
+
+.mobileMenuExit {
+  transform: translateX(0);
+  opacity: 1;
+  background-color: #1A1A1A !important;
+}
+
+.mobileMenuExitActive {
+  transform: translateX(100%);
+  opacity: 1;
+  background-color: #1A1A1A !important;
+  transition: transform 0.3s ease-in;
+}

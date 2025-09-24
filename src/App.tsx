@@ -3,35 +3,16 @@ import testimonialsData from './testemonials.json';
 import { BrandedSectionTitle } from './components/Shared';
 import { Footer } from './components/Footer';
 import { CookieConsent } from './components/CookieConsent';
+import { Navigation } from './components/Navigation';
+import { Hero } from './components/Hero';
 
 function App() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const [showAllGallery, setShowAllGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [openAccordionIndices, setOpenAccordionIndices] = useState<number[]>([0]);
   const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollY = useRef(0);
 
-  const handleMobileMenuToggle = () => {
-    if (isMobileMenuOpen) {
-      closeMobileMenu();
-    } else {
-      setIsMobileMenuOpen(true);
-      setIsClosing(false);
-      setTimeout(() => setIsAnimating(true), 10);
-    }
-  };
-
-  const closeMobileMenu = () => {
-    setIsClosing(true);
-    setIsAnimating(false);
-    setTimeout(() => {
-      setIsMobileMenuOpen(false);
-      setIsClosing(false);
-    }, 300);
-  };
 
   const openImageViewer = (imageUrl: string) => {
     const index = testimonialsData.indexOf(imageUrl);
@@ -160,178 +141,9 @@ function App() {
   return (
     <div className="min-h-screen bg-gaming-dark text-white">
 
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gaming-dark backdrop-blur-sm nav-shadow">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="https://rankupacademy.gg/assets/RUA-Logo-147557a47311e385321694bba7ec05e8483dde36386908d1ef3bf1d2854d1ee5.svg"
-              alt="Rank Up Academy Logo"
-              className="h-10 w-auto mr-3"
-            />
-            <span className="font-gaming text-xl font-bold text-gaming-gold">RANK UP ACADEMY</span>
-          </div>
+      <Navigation />
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Home</a>
-            <a href="#about" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">About</a>
-            <a href="#testimonials" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Testimonials</a>
-            <a href="#pricing" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Pricing</a>
-            <a href="#faq" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">FAQ</a>
-            <a href="#contact" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Contact</a>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <a href="https://rankupacademy.gg/users/sign_in" target="_blank" rel="noopener noreferrer" className="md-show-desktop bg-white border-2 border-gaming-gold text-black hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
-              Log In
-            </a>
-            <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
-              Get Started
-            </a>
-
-            {/* Mobile menu button */}
-            <button
-              className="md-hidden-mobile bg-gaming-gold text-gaming-dark p-2 rounded-lg"
-              onClick={handleMobileMenuToggle}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className={`md:hidden fixed inset-0 z-60 mobile-menu-overlay ${
-            isClosing
-              ? 'mobile-menu-exit-active'
-              : isAnimating
-                ? 'mobile-menu-enter-active'
-                : 'mobile-menu-enter'
-          }`}
-        >
-          {/* Close button */}
-          <button
-            className="absolute top-4 right-4 bg-gaming-gold text-gaming-dark p-2 rounded-lg z-50"
-            onClick={closeMobileMenu}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
-            <div className="flex flex-col space-y-4">
-              <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
-                Get Started
-              </a>
-              <a href="https://rankupacademy.gg/users/sign_in" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-gaming-gold text-black hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
-                Log In
-              </a>
-            </div>
-
-            <a href="#home" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              Home
-            </a>
-            <a href="#about" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              About
-            </a>
-            <a href="#testimonials" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              Testimonials
-            </a>
-            <a href="#pricing" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              Pricing
-            </a>
-            <a href="#faq" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              FAQ
-            </a>
-            <a href="#contact" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              Contact
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen overflow-hidden hero-mobile-container">
-        {/* Hero Background Image */}
-        <div
-          className="hero-image-mobile hero-bg-image"
-          style={{
-            backgroundImage: 'url(/assets/square_tracer-hero-image.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          {/* Dark overlay for text readability - only on desktop */}
-          <div className="absolute inset-0 hidden md:block hero-bg-overlay"></div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="hero-content-mobile hero-content-padding">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl relative">
-              {/* Hero content wrapper that moves with the geometric box */}
-              <div className="hero-text-wrapper">
-                {/* Stylish geometric background with content inside */}
-                <div className="geometric-box hero-geometric-box">
-                  {/* Hero Text Content */}
-                  {/* Line 1: FROM GETTING CARRIED */}
-                  <div className="mb-4">
-                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
-                      FROM GETTING CARRIED
-                    </span>
-                  </div>
-
-                  {/* Line 2: TO BEING THE CARRY */}
-                  <div className="mb-6">
-                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-gaming-gold">
-                      TO BEING{' '}
-                    </span>
-                    <span className="font-gaming text-4xl md:text-5xl lg:text-6xl font-bold text-orange-500">
-                      THE CARRY
-                    </span>
-                  </div>
-
-                  {/* Line 3: WE WILL TEACH YOU HOW TO RANK UP */}
-                  <div className="mb-8">
-                    <p className="font-gaming text-gaming-gold" style={{ fontSize: '1.25rem', fontWeight: '100' }}>
-                      WE WILL TEACH YOU HOW TO RANK UP
-                    </p>
-                  </div>
-
-                  {/* Line 4: Button and Limited Slots */}
-                  <div className="flex items-center gap-6">
-                    {/* Column 1: START NOW Button */}
-                    <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
-                      START NOW
-                    </a>
-
-                    {/* Column 2: LIMITED SLOTS AVAILABLE */}
-                    <div className="rounded-lg hero-limited-slots-box">
-                      <span className="text-gaming-gold font-bold text-lg font-gaming">
-                        LIMITED SLOTS AVAILABLE
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Gradient Blur */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gaming-dark via-gaming-dark/80 to-transparent"></div>
-
-      </section>
+      <Hero />
 
       {/* Rank Up Academy Branding Section */}
       <BrandedSectionTitle

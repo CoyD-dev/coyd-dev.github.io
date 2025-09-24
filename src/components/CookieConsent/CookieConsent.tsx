@@ -28,6 +28,12 @@ const CookieConsent: React.FC = () => {
           'ad_personalization': 'granted',
           'analytics_storage': 'granted'
         });
+        
+         // trigger page_view immediately
+        (window as any).gtag('event', 'page_view', {
+          page_path: window.location.pathname,
+          page_title: document.title
+        });
       }
     }
   }, []);
@@ -44,6 +50,12 @@ const CookieConsent: React.FC = () => {
           'ad_user_data': 'granted',
           'ad_personalization': 'granted',
           'analytics_storage': 'granted'
+        });
+
+         // trigger page_view immediately
+        (window as any).gtag('event', 'page_view', {
+          page_path: window.location.pathname,
+          page_title: document.title
         });
       }
     } else {

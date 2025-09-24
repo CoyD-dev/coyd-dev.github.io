@@ -1,0 +1,263 @@
+/* Hero Section Styles */
+.heroBgOverlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.heroGeometricBox {
+  background: linear-gradient(135deg, rgba(252, 211, 5, 0.15), rgba(252, 211, 5, 0.05));
+  border-radius: 20px;
+  border: 2px solid rgba(252, 211, 5, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem;
+  margin: 1rem;
+  max-width: 35rem;
+}
+
+.heroLimitedSlotsBox {
+  border: 1px solid #FCD305;
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Hero-specific text sizes */
+.heroMainTitle {
+  font-size: 2.25rem; /* Default: text-4xl equivalent */
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem; /* Default: text-xl equivalent */
+  font-weight: 100;
+}
+
+/* Keep heroMainTitle at 2.25rem maximum for all screen sizes */
+
+/* Hero section enhancements */
+.heroBgImage {
+  background-size: cover !important;
+  background-position: center 20% !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+}
+
+@media (max-width: 768px) {
+  .heroBgImage {
+    background-attachment: scroll;
+  }
+}
+
+/* Hero content positioning */
+.heroContentPadding {
+  padding-top: 5rem;
+  padding-left: 5rem;
+}
+
+@media (max-width: 1124px) {
+  .heroContentPadding {
+    padding-left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10rem;
+  }
+}
+
+/* Hero Image Gradient Blending - Applied on both mobile and desktop */
+.heroImageMobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background: linear-gradient(to bottom, #1A1A1A, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heroImageMobile::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to top, #1A1A1A, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Section Mobile Reordering */
+@media only screen and (max-width: 1124px) {
+  /* Mobile: Use flexbox with column direction for reordering */
+  .heroMobileContainer {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Mobile: Hero text appears first */
+  .heroContentMobile {
+    order: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 45vh !important;
+    padding-top: 6rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Mobile: Hero image appears second */
+  .heroImageMobile {
+    order: 2 !important;
+    position: relative !important;
+    min-height: 35rem !important;
+    height: auto !important;
+    top: -50px !important;
+  }
+}
+
+/* Edge case: Responsive margins for medium desktop screens */
+@media only screen and (min-width: 1125px) and (max-width: 1400px) {
+  .heroTextWrapper {
+    position: relative;
+    left: calc((1400px - 100vw) * 0.15) !important;
+    margin-left: calc((1400px - 100vw) * 0.1) !important;
+  }
+}
+
+/* Desktop: Restore original overlay layout */
+@media only screen and (min-width: 1125px) {
+  .heroMobileContainer {
+    display: block !important;
+  }
+
+  .heroContentMobile {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    order: initial !important;
+    display: block !important;
+    align-items: initial !important;
+    justify-content: initial !important;
+    min-height: initial !important;
+    padding-top: 10rem !important;
+    padding-bottom: initial !important;
+  }
+
+  .heroImageMobile {
+    position: absolute !important;
+    top: 0 !important;
+    order: initial !important;
+    min-height: initial !important;
+    height: calc(100vh - 80px) !important;
+    height: 100% !important;
+    background-position: center 10% !important;
+  }
+}
+
+/* Responsive text scaling */
+@media only screen and (max-width: 640px) {
+  .heroTextWrapper .font-gaming {
+    line-height: 1.1;
+  }
+
+  .heroTextWrapper .text-4xl,
+  .heroTextWrapper .md\\:text-5xl,
+  .heroTextWrapper .lg\\:text-6xl {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 600px) {
+  .heroGeometricBox {
+    padding: 1.5rem !important;
+    margin: 0.5rem !important;
+    text-align: center !important;
+  }
+
+  .heroTextWrapper .font-gaming {
+    font-size: 1.5rem !important;
+    line-height: 1.1;
+  }
+
+  /* Hero-specific class overrides */
+  .heroMainTitle {
+    font-size: 1.5rem !important;
+  }
+
+  .heroSubtitle {
+    font-size: 0.75rem !important;
+  }
+
+  .heroTextWrapper .text-lg {
+    font-size: 0.75rem !important;
+  }
+
+  .heroTextWrapper .py-4 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .heroTextWrapper .px-8 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Button text scaling */
+  .heroGeometricBox a {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Limited slots text scaling */
+  .heroLimitedSlotsBox span {
+    font-size: 0.75rem !important;
+  }
+
+  /* Flex layout centering */
+  .heroGeometricBox .flex {
+    justify-content: center !important;
+  }
+
+  .heroGeometricBox .mb-8 p {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Ultra small screens */
+@media only screen and (max-width: 480px) {
+  .heroTextWrapper .text-4xl,
+  .heroTextWrapper .md\\:text-5xl,
+  .heroTextWrapper .lg\\:text-6xl {
+    font-size: 2rem !important;
+  }
+
+  .heroTextWrapper .text-lg {
+    font-size: 1rem !important;
+  }
+
+  .heroTextWrapper .py-4 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .heroTextWrapper .px-8 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
