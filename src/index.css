@@ -426,20 +426,6 @@ nav a[href="/sign_up"]:hover {
 
 
 
-/* Benefits Section */
-.benefit-item {
-  margin-bottom: 2rem;
-}
-
-.benefit-title {
-  margin-bottom: 1rem;
-  font-size: 4rem;
-}
-
-.benefit-circle {
-  margin-top: 1rem;
-}
-
 /* Small mobile screens */
 @media (max-width: 600px) {
   .geometric-box {
@@ -456,49 +442,6 @@ nav a[href="/sign_up"]:hover {
     font-size: 0.875rem !important;
   }
 
-  /* Benefits section adjustments for ultra-small screens */
-  .benefit-title {
-    font-size: 1.75rem !important;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-
-  .benefit-item {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    margin-bottom: 3rem !important;
-  }
-
-  .benefit-item > div:last-child {
-    margin-left: 0 !important;
-    margin-top: 1rem !important;
-    max-width: 100% !important;
-    padding: 0 1rem !important;
-  }
-
-  .benefit-title {
-    text-align: center !important;
-  }
-
-  .benefit-item p,
-  .benefit-item ul {
-    line-height: 1.5 !important;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: justify !important;
-  }
-
-  .benefit-item li {
-    align-items: flex-start !important;
-    text-align: justify !important;
-  }
-
-  /* Hide the golden vertical line for mobile layout */
-  #benefits-vertical-line {
-    display: none !important;
-  }
 
   /* Remove bottom padding from video section on mobile */
   section.bg-gaming-dark[style*="paddingBottom"] {
@@ -520,40 +463,6 @@ body, html {
   overflow-x: hidden;
 }
 
-/* Benefits section container - prevent overflow */
-.benefits-section-container {
-  overflow-x: hidden;
-}
-
-/* Isolated benefit scroll animations - completely separate from other elements */
-.benefits-scroll-animation {
-  opacity: 0;
-  transform: translateX(100px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.benefits-scroll-animation.benefits-slide-from-left {
-  transform: translateX(-100px);
-}
-
-.benefits-scroll-animation.benefits-slide-from-right {
-  transform: translateX(100px);
-}
-
-.benefits-scroll-animation.benefits-animate-in {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.benefits-scroll-animation.benefits-animate-out.benefits-slide-from-left {
-  opacity: 0;
-  transform: translateX(-100px);
-}
-
-.benefits-scroll-animation.benefits-animate-out.benefits-slide-from-right {
-  opacity: 0;
-  transform: translateX(100px);
-}
 
 /* Keyframes for slide animations */
 @keyframes slideInFromLeft {
@@ -792,48 +701,6 @@ footer[id] {
   text-transform: uppercase;
 }
 
-/* Benefits Section Styles */
-.benefits-vertical-line {
-  position: absolute;
-  left: 38px;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background-color: #FCD305;
-}
-
-.benefit-circle {
-  width: 80px;
-  height: 80px;
-  background-color: #FFFFFF;
-  border-radius: 50%;
-  flex-shrink: 0;
-  z-index: 10;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.benefit-content {
-  margin-left: 2rem;
-}
-
-.benefit-content-with-padding {
-  margin-left: 2rem;
-  padding-top: 0.5rem;
-}
-
-.benefit-icon {
-  width: 40px;
-  height: 40px;
-  filter: brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(447%) hue-rotate(177deg) brightness(95%) contrast(93%);
-}
-
-.benefit-icon-brain {
-  width: 40px;
-  height: 40px;
-}
 
 /* Testimonials Section Styles */
 .testimonials-section {
