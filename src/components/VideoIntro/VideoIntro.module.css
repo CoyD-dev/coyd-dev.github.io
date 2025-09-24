@@ -1,0 +1,76 @@
+/* Video Section Styles */
+.videoSectionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.videoPlayer {
+  background-color: #000;
+  max-height: 400px;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.videoPlayButton {
+  background-color: #FCD305;
+  color: #000;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(252, 211, 5, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.videoPlayIcon {
+  width: 0;
+  height: 0;
+  border-left: 8px solid #000;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.videoTextBox {
+  background-color: rgba(245, 245, 245, 0.8);
+  border: 1px solid rgba(252, 211, 5, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Video section padding class with responsive behavior */
+.videoSectionPadding {
+  padding-top: 0rem;
+  padding-bottom: 5rem;
+}
+
+/* Video Section Mobile Layout */
+@media (max-width: 768px) {
+  .videoSectionGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .videoSectionPadding {
+    padding-bottom: 0rem;
+  }
+}

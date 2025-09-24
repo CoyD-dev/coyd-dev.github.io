@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { CookieConsent } from './components/CookieConsent';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
+import { VideoIntro } from './components/VideoIntro';
 
 function App() {
   const [showAllGallery, setShowAllGallery] = useState(false);
@@ -153,112 +154,7 @@ function App() {
         className="brandingSection"
       />
 
-      {/* Video and Introduction Section */}
-      <section className="bg-gaming-dark video-section-padding">
-        <div className="container mx-auto px-4">
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "3rem",
-            alignItems: "center"
-          }} className="video-section-grid">
-            {/* Left Side - Video Player */}
-            <div className="relative">
-              <video
-                id="customVideo"
-                className="w-full rounded-lg"
-                style={{
-                  backgroundColor: "#000",
-                  maxHeight: "400px"
-                }}
-                onClick={() => {
-                  const video = document.getElementById('customVideo') as HTMLVideoElement;
-                  const overlay = document.getElementById('videoOverlay');
-                  if (video.paused) {
-                    video.play();
-                    video.controls = true;
-                    if (overlay) overlay.style.display = 'none';
-                  } else {
-                    video.pause();
-                    video.controls = false;
-                    if (overlay) overlay.style.display = 'flex';
-                  }
-                }}
-              >
-                <source src="https://rankupacademy.gg/assets/RUA_Trailer_V2-a98634f6b41a79631adbe15ed50fc57154a8f8460f0b11190b652ee1f1c37871.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-
-              {/* Custom Play Button Overlay */}
-              <div
-                id="videoOverlay"
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  right: "0",
-                  bottom: "0",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "rgba(0, 0, 0, 0.3)",
-                  cursor: "pointer",
-                  borderRadius: "8px"
-                }}
-                onClick={() => {
-                  const video = document.getElementById('customVideo') as HTMLVideoElement;
-                  const overlay = document.getElementById('videoOverlay');
-                  video.play();
-                  video.controls = true;
-                  if (overlay) overlay.style.display = 'none';
-                }}
-              >
-                <button
-                  style={{
-                    backgroundColor: "#FCD305",
-                    color: "#000",
-                    border: "none",
-                    borderRadius: "24px",
-                    padding: "12px 24px",
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    boxShadow: "0 4px 12px rgba(252, 211, 5, 0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px"
-                  }}
-                  className="font-gaming"
-                >
-                  <span style={{
-                    width: "0",
-                    height: "0",
-                    borderLeft: "8px solid #000",
-                    borderTop: "5px solid transparent",
-                    borderBottom: "5px solid transparent"
-                  }}></span>
-                  PREVIEW
-                </button>
-              </div>
-            </div>
-
-            {/* Right Side - Boxed Text */}
-            <div style={{
-              backgroundColor: "rgba(245, 245, 245, 0.8)",
-              border: "1px solid rgba(252, 211, 5, 0.3)",
-              borderRadius: "12px",
-              padding: "2rem",
-              backdropFilter: "blur(10px)"
-            }}>
-              <p className="text-black text-lg leading-relaxed font-medium" style={{ textTransform: "uppercase" }}>
-                <span className="font-bold">Your rank is not held hostage by your teammates anymore.</span>
-                <br />
-                Picture this: What if Top Players could guide you step-by-step, revealing <span className="font-bold">EXACTLY</span> what you need to do to <span className="font-bold" style={{ color: "#FC4F05" }}>dominate your games</span>?
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <VideoIntro />
 
       {/* Benefits Section */}
       <section className="bg-gaming-dark benefits-section-container">
