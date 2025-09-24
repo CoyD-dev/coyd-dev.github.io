@@ -195,9 +195,7 @@ function App() {
     <div className="min-h-screen bg-gaming-dark text-white">
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gaming-dark backdrop-blur-sm" style={{
-        boxShadow: '0 8px 32px rgba(26, 26, 26, 0.8), 0 4px 16px rgba(26, 26, 26, 0.4)'
-      }}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gaming-dark backdrop-blur-sm nav-shadow">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img
@@ -246,14 +244,13 @@ function App() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className={`md:hidden fixed inset-0 z-60 ${
+          className={`md:hidden fixed inset-0 z-60 mobile-menu-overlay ${
             isClosing
               ? 'mobile-menu-exit-active'
               : isAnimating
                 ? 'mobile-menu-enter-active'
                 : 'mobile-menu-enter'
           }`}
-          style={{ backgroundColor: '#1A1A1A' }}
         >
           {/* Close button */}
           <button
@@ -309,28 +306,17 @@ function App() {
           }}
         >
           {/* Dark overlay for text readability - only on desktop */}
-          <div className="absolute inset-0 hidden md:block" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}></div>
+          <div className="absolute inset-0 hidden md:block hero-bg-overlay"></div>
         </div>
 
         {/* Hero Content */}
-        <div className="hero-content-mobile" style={{ paddingTop: '10rem' }}>
+        <div className="hero-content-mobile hero-content-padding">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl relative">
               {/* Hero content wrapper that moves with the geometric box */}
               <div className="hero-text-wrapper">
                 {/* Stylish geometric background with content inside */}
-                <div
-                  className="geometric-box"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(252, 211, 5, 0.15), rgba(252, 211, 5, 0.05))',
-                    borderRadius: '20px',
-                    border: '2px solid rgba(252, 211, 5, 0.3)',
-                    backdropFilter: 'blur(10px)',
-                    padding: '3rem 2rem',
-                    margin: '1rem',
-                    maxWidth: '35rem'
-                  }}
-                >
+                <div className="geometric-box hero-geometric-box">
                   {/* Hero Text Content */}
                   {/* Line 1: FROM GETTING CARRIED */}
                   <div className="mb-4">
@@ -364,14 +350,7 @@ function App() {
                     </a>
 
                     {/* Column 2: LIMITED SLOTS AVAILABLE */}
-                    <div className="rounded-lg" style={{
-                      border: '1px solid #FCD305',
-                      marginLeft: '1rem',
-                      paddingLeft: '1rem',
-                      paddingRight: '1rem',
-                      paddingTop: '0.25rem',
-                      paddingBottom: '0.25rem'
-                    }}>
+                    <div className="rounded-lg hero-limited-slots-box">
                       <span className="text-gaming-gold font-bold text-lg font-gaming">
                         LIMITED SLOTS AVAILABLE
                       </span>
@@ -389,53 +368,22 @@ function App() {
       </section>
 
       {/* Rank Up Academy Branding Section */}
-      <section id="about" style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        backgroundColor: "#1A1A1A",
-        padding: "48px 0"
-      }}>
+      <section id="about" className="branding-section">
         {/* Left Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="branding-line"></div>
 
         {/* Center Text */}
-        <div style={{
-          textAlign: "center",
-          margin: "0 40px",
-          color: "#FCD305"
-        }}>
-          <h2 className="font-gaming" style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            letterSpacing: "2px",
-            marginBottom: "8px",
-            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
-          }}>
+        <div className="branding-text-container">
+          <h2 className="font-gaming branding-title">
             RANK UP ACADEMY
           </h2>
-          <p style={{
-            fontSize: "0.875rem",
-            fontWeight: "600",
-            color: "#FCD305",
-            letterSpacing: "3px",
-            opacity: "0.9"
-          }}>
+          <p className="branding-subtitle">
             WHERE YOUR IMPROVEMENT BEGINS
           </p>
         </div>
 
         {/* Right Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="branding-line"></div>
       </section>
 
       {/* Video and Introduction Section */}
@@ -943,112 +891,47 @@ function App() {
       </section>
 
       {/* Three Column Hero Section */}
-      <section id="pricing" style={{
-        backgroundColor: "#1a1a1a",
-        padding: "0",
-        height: "50vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-        overflow: "hidden"
-      }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
-          width: "100%",
-          height: "100%"
-        }}>
+      <section id="pricing" className="pricing-section">
+        <div className="pricing-grid">
           {/* Left Column - Zenyatta with fade from left */}
-          <div style={{
-            padding: "1rem 0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}>
-            <div style={{
-              position: "relative",
-              backgroundImage: "url('/zenyatta.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "right center",
-              backgroundRepeat: "no-repeat",
-              width: "100%",
-              height: "46vh"
-            }}>
-              <div style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: "linear-gradient(to right, rgba(26, 26, 26, 0.8) 0%, transparent 100%)"
-              }}></div>
+          <div className="pricing-column">
+            <div className="pricing-bg-zenyatta">
+              <div className="pricing-overlay-left"></div>
             </div>
           </div>
 
           {/* Center Column - Fixed width yellow box */}
-          <div style={{
-            width: "25rem",
-            height: "100%",
-            backgroundColor: "#FCD305",
-            border: "5px solid #313338",
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            zIndex: 10
-          }}>
-              <div style={{
-                padding: "2rem 2rem 1rem 2rem",
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start"
-              }}>
+          <div className="pricing-center-box">
+              <div className="pricing-content">
                 {/* Title */}
-                <h2 className="font-gaming" style={{
-                  color: "#000000",
-                  textAlign: "center",
-                  fontSize: "2rem",
-                  fontWeight: "900",
-                  marginBottom: "1.5rem",
-                  letterSpacing: "1px"
-                }}>
+                <h2 className="font-gaming pricing-title">
                   $75 / MONTH
                 </h2>
 
                 {/* Bullet List */}
-                <ul style={{
-                  color: "#000000",
-                  textAlign: "justify",
-                  fontSize: "0.9rem",
-                  fontWeight: "600",
-                  lineHeight: "1.6",
-                  listStyle: "none",
-                  padding: "0",
-                  margin: "0"
-                }}>
-                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                <ul className="pricing-list">
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     PERSONALIZED MONTHLY VOD REVIEW
                   </li>
-                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     ACCESS TO SIMPLE STEP BY STEP GUIDES
                   </li>
-                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     JOIN A LIKE-MINDED COMMUNITY
                   </li>
-                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     RECEIVE TAILORED FEEDBACK
                   </li>
-                  <li style={{ marginBottom: "0.8rem", display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     CANCEL ANYTIME, RISK-FREE
                   </li>
-                  <li style={{ display: "flex", alignItems: "flex-start" }}>
-                    <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>•</span>
+                  <li className="pricing-list-item">
+                    <span className="pricing-list-bullet">•</span>
                     HUNDREDS OF CLASSES AVAILABLE
                   </li>
                 </ul>
@@ -1056,29 +939,9 @@ function App() {
           </div>
 
           {/* Right Column - Ana with gradient transparent to right */}
-          <div style={{
-            padding: "1rem 0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}>
-            <div style={{
-              position: "relative",
-              backgroundImage: "url('/ana.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "left center",
-              backgroundRepeat: "no-repeat",
-              width: "100%",
-              height: "46vh"
-            }}>
-              <div style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: "linear-gradient(to right, transparent 0%, rgba(26, 26, 26, 0.8) 100%)"
-              }}></div>
+          <div className="pricing-column">
+            <div className="pricing-bg-ana">
+              <div className="pricing-overlay-right"></div>
             </div>
           </div>
         </div>
