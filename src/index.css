@@ -122,6 +122,15 @@ nav a[href="/sign_up"]:hover {
   padding-left: 5rem;
 }
 
+@media (max-width: 1124px) {
+  .hero-content-padding {
+    padding-left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /* Hero section positioning */
 .hero-section {
   margin-top: 80px;
@@ -1195,9 +1204,15 @@ footer[id] {
 .hero-limited-slots-box {
   border: 1px solid #FCD305;
   margin-left: 1rem;
-  padding: 1rem 1rem 0.25rem 1rem;
+  padding: 0.25rem;
   border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
+
 
 .hero-content-padding {
   padding-top: 10rem;
@@ -1414,8 +1429,7 @@ footer[id] {
 /* Pricing Section Styles */
 .pricing-section {
   background-color: #1a1a1a;
-  padding: 0;
-  height: 50vh;
+  padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1427,7 +1441,8 @@ footer[id] {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   width: 100%;
-  height: 100%;
+  height: 35vh;
+  min-height: 22rem;
 }
 
 .pricing-column {
@@ -1439,22 +1454,24 @@ footer[id] {
 
 .pricing-bg-zenyatta {
   position: relative;
-  background-image: url('/zenyatta.jpg');
+  background-image: url('/assets/zenyatta.jpg');
   background-size: cover;
-  background-position: right center;
+  background-position: right top;
   background-repeat: no-repeat;
   width: 100%;
-  height: 46vh;
+  height: 35vh;
+  min-height: 22rem;
 }
 
 .pricing-bg-ana {
   position: relative;
-  background-image: url('/ana.jpg');
+  background-image: url('/assets/ana.jpg');
   background-size: cover;
-  background-position: left center;
+  background-position: left top;
   background-repeat: no-repeat;
   width: 100%;
-  height: 46vh;
+  height: 35vh;
+  min-height: 22rem;
 }
 
 .pricing-overlay-left {
@@ -1463,7 +1480,7 @@ footer[id] {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+  background: linear-gradient(to left, transparent 0%, rgba(26, 26, 26, 1) 100%);
 }
 
 .pricing-overlay-right {
@@ -1472,26 +1489,29 @@ footer[id] {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, transparent 0%, rgba(26, 26, 26, 0.8) 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(26, 26, 26, 1) 100%);
 }
 
 .pricing-center-box {
   width: 25rem;
-  height: 100%;
   background-color: #FCD305;
   border: 5px solid #313338;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   z-index: 10;
+  min-height: 300px;
+  height: 100%;
 }
 
 .pricing-content {
   padding: 2rem 2rem 1rem 2rem;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 2rem;
 }
 
 .pricing-title {
@@ -1499,8 +1519,9 @@ footer[id] {
   text-align: center;
   font-size: 2rem;
   font-weight: 900;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   letter-spacing: 1px;
+  flex-shrink: 0;
 }
 
 .pricing-list {
@@ -1512,6 +1533,10 @@ footer[id] {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .pricing-list-item {
