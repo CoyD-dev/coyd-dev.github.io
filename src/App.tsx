@@ -172,16 +172,17 @@ function App() {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#home" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Home</a>
             <a href="#about" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">About</a>
-            <a href="#services" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Services</a>
             <a href="#testimonials" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Testimonials</a>
+            <a href="#pricing" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Pricing</a>
+            <a href="#faq" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">FAQ</a>
             <a href="#contact" className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming">Contact</a>
           </div>
 
           <div className="flex items-center space-x-4">
-            <a href="https://rankupacademy.gg/users/sign_in" className="md-show-desktop bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
+            <a href="https://rankupacademy.gg/users/sign_in" target="_blank" rel="noopener noreferrer" className="md-show-desktop bg-white border-2 border-gaming-gold text-black hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 no-underline font-gaming">
               Log In
             </a>
-            <a href="https://rankupacademy.gg/users/sign_up" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
+            <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="md-show-desktop bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow no-underline font-gaming">
               Get Started
             </a>
 
@@ -213,7 +214,7 @@ function App() {
                 ? 'mobile-menu-enter-active'
                 : 'mobile-menu-enter'
           }`}
-          style={{ backgroundColor: 'rgb(26, 31, 58)' }}
+          style={{ backgroundColor: '#1A1A1A' }}
         >
           {/* Close button */}
           <button
@@ -227,10 +228,10 @@ function App() {
 
           <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
             <div className="flex flex-col space-y-4">
-              <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
+              <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Get Started
               </a>
-              <a href="https://rankupacademy.gg/users/sign_in" className="bg-white border-2 border-gaming-gold text-gaming-gold hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
+              <a href="https://rankupacademy.gg/users/sign_in" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-gaming-gold text-black hover:bg-gaming-gold hover:text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center no-underline font-gaming" onClick={closeMobileMenu}>
                 Log In
               </a>
             </div>
@@ -241,11 +242,14 @@ function App() {
             <a href="#about" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               About
             </a>
-            <a href="#services" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
-              Services
-            </a>
             <a href="#testimonials" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Testimonials
+            </a>
+            <a href="#pricing" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
+              Pricing
+            </a>
+            <a href="#faq" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
+              FAQ
             </a>
             <a href="#contact" className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming" onClick={closeMobileMenu}>
               Contact
@@ -255,7 +259,7 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden hero-mobile-container">
+      <section id="home" className="relative min-h-screen overflow-hidden hero-mobile-container">
         {/* Hero Background Image */}
         <div
           className="hero-image-mobile hero-bg-image"
@@ -316,7 +320,7 @@ function App() {
                   {/* Line 4: Button and Limited Slots */}
                   <div className="flex items-center gap-6">
                     {/* Column 1: START NOW Button */}
-                    <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
+                    <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline">
                       START NOW
                     </a>
 
@@ -346,7 +350,7 @@ function App() {
       </section>
 
       {/* Rank Up Academy Branding Section */}
-      <section style={{
+      <section id="about" style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -759,7 +763,7 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section style={{
+      <section id="testimonials" style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -900,7 +904,7 @@ function App() {
       </section>
 
       {/* Three Column Hero Section */}
-      <section style={{
+      <section id="pricing" style={{
         backgroundColor: "#1a1a1a",
         padding: "0",
         height: "50vh",
@@ -1052,7 +1056,7 @@ function App() {
         textAlign: "center"
       }}>
         {/* Button */}
-        <a href="https://rankupacademy.gg/users/sign_up" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline" style={{
+        <a href="https://rankupacademy.gg/users/sign_up" target="_blank" rel="noopener noreferrer" className="bg-gaming-gold hover:bg-secondary-500 text-gaming-dark font-bold py-4 px-8 transition-all duration-300 transform hover:scale-105 gaming-glow text-lg font-gaming no-underline" style={{
           marginBottom: "0.5rem",
           textTransform: "uppercase",
           letterSpacing: "1px",
@@ -1124,9 +1128,9 @@ function App() {
       </section>
 
       {/* Q&A Accordion Section */}
-      <section style={{
+      <section id="faq" style={{
         backgroundColor: "#1a1a1a",
-        padding: "0 2rem 4rem 2rem",
+        padding: "0 2rem 1rem 2rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -1226,6 +1230,55 @@ function App() {
           ))}
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer id="contact" style={{
+        backgroundColor: "rgb(49, 51, 56)",
+        borderTop: "1px solid #313338",
+        padding: "0.5rem 0",
+        width: "100%"
+      }}>
+        <div className="footer-container">
+          {/* Left side - Links */}
+          <div className="footer-links">
+            <a
+              href="https://rankupacademy.gg/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-gaming footer-link"
+              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
+            >
+              CONTACT US
+            </a>
+            <a
+              href="https://rankupacademy.gg/terms_of_service"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-gaming footer-link"
+              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
+            >
+              TERMS OF SERVICE
+            </a>
+            <a
+              href="https://rankupacademy.gg/privacy_policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-gaming footer-link"
+              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
+            >
+              PRIVACY POLICY
+            </a>
+          </div>
+
+          {/* Right side - Copyright */}
+          <div className="font-gaming footer-copyright">
+            © Rank Up Academy {new Date().getFullYear()}. All rights reserved
+          </div>
+        </div>
+      </footer>
 
       {/* Image Viewer Modal */}
       {selectedImageIndex !== null && (
