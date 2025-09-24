@@ -750,27 +750,12 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        backgroundColor: "#1A1A1A",
-        padding: "48px 0"
-      }}>
+      <section id="testimonials" className="responsive-line-section">
         {/* Left Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="responsive-line"></div>
 
         {/* Center Text */}
-        <div style={{
-          textAlign: "center",
-          margin: "0 40px",
-          color: "#FCD305"
-        }}>
+        <div className="responsive-text-container">
           <h2 className="font-gaming" style={{
             fontSize: "2rem",
             fontWeight: "bold",
@@ -783,11 +768,7 @@ function App() {
         </div>
 
         {/* Right Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="responsive-line"></div>
       </section>
 
       {/* Gallery Section */}
@@ -842,26 +823,12 @@ function App() {
       </section>
 
       {/* Choice Section */}
-      <section style={{
-        backgroundColor: "#1a1a1a",
-        padding: "4rem 0",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
+      <section className="responsive-line-section">
         {/* Left Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to left, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="responsive-line"></div>
 
         {/* Choice Text */}
-        <div style={{
-          textAlign: "center",
-          margin: "0 40px",
-          color: "#FCD305"
-        }}>
+        <div className="responsive-text-container">
           <h2 className="font-gaming" style={{
             fontSize: "2rem",
             fontWeight: "bold",
@@ -883,11 +850,7 @@ function App() {
         </div>
 
         {/* Right Line */}
-        <div style={{
-          flex: 1,
-          height: "2px",
-          background: "linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%)"
-        }}></div>
+        <div className="responsive-line"></div>
       </section>
 
       {/* Three Column Hero Section */}

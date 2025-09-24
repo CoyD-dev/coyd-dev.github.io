@@ -1226,18 +1226,87 @@ footer[id] {
   width: 100%;
   background-color: #1A1A1A;
   padding: 48px 0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .branding-line {
   flex: 1;
+  min-width: 100px;
   height: 2px;
+  min-height: 2px;
   background: linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%);
+  display: block;
 }
 
 .branding-text-container {
   text-align: center;
   margin: 0 40px;
   color: #FCD305;
+  flex-shrink: 0;
+}
+
+/* Responsive Section Styles - applies to all sections with lines */
+.responsive-line-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1A1A1A;
+  padding: 48px 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.responsive-line {
+  flex: 1;
+  min-width: 100px;
+  height: 2px;
+  min-height: 2px;
+  background: linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%);
+  display: block;
+}
+
+.responsive-text-container {
+  text-align: center;
+  margin: 0 40px;
+  color: #FCD305;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1124px) {
+  .branding-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0;
+  }
+
+  .branding-line {
+    width: 60%;
+    min-width: 200px;
+  }
+
+  .branding-text-container {
+    margin: 0;
+    order: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .responsive-line-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .responsive-line {
+    width: 60%;
+    min-width: 200px;
+  }
+
+  .responsive-text-container {
+    margin: 0;
+    order: 0;
+  }
 }
 
 .branding-title {
