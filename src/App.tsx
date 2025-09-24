@@ -7,6 +7,7 @@ function App() {
   const [isClosing, setIsClosing] = useState(false);
   const [showAllGallery, setShowAllGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [openAccordionIndices, setOpenAccordionIndices] = useState<number[]>([0]);
   const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollY = useRef(0);
 
@@ -49,6 +50,41 @@ function App() {
     }
     setSelectedImageIndex(newIndex);
   };
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordionIndices(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
+  const faqData = [
+    {
+      question: "AM I GUARANTEED TO RANK UP?",
+      answer: "ACHIEVING A HIGHER RANK DEPENDS ON YOUR COMMITMENT. IF YOU IMPLEMENT OUR FEEDBACK, PUT IN THE EFFORT, AND TAKE RESPONSIBILITY FOR YOUR PROGRESS, YOU WILL RANK UP. IT'S AKIN TO ASKING A GYM FOR A GUARANTEE ON A 6-PACK. SHOW UP, FOLLOW THE GUIDANCE, AND TRAIN HARD FOR VISIBLE RESULTS."
+    },
+    {
+      question: "I'M IN X COUNTRY, CAN I JOIN?",
+      answer: "OF COURSE! RANK UP ACADEMY IS ACCESSIBLE TO ANYONE WORLDWIDE. WHILE CLASSES ARE CONDUCTED IN REAL-TIME, ALL SESSIONS ARE RECORDED, ALLOWING YOU TO WATCH AT YOUR CONVENIENCE."
+    },
+    {
+      question: "IS IT SUITABLE FOR X RANK?",
+      answer: "YES. RANK UP ACADEMY CATERS TO PLAYERS ACROSS ALL RANKS, FROM BRONZE 5 TO TOP 500. OUR TEACHINGS ARE FOCUSED ON FUNDAMENTALS COMBINED WITH CUSTOMIZED FEEDBACK FOR EACH INDIVIDUAL, ENSURING MAXIMUM PROGRESS FOR EVERYONE."
+    },
+    {
+      question: "I'M ON CONSOLE, CAN I JOIN?",
+      answer: "ABSOLUTELY. ALL PLATFORMS ARE WELCOME AT RANK UP ACADEMY."
+    },
+    {
+      question: "I DON'T HAVE TIME, IS IT WORTH IT?",
+      answer: "DEFINITELY. RANK UP ACADEMY MAXIMIZES THE VALUE YOU GET FROM EVERY HOUR INVESTED. QUALITY IMPROVEMENT WITH LIMITED TIME IS FAR BETTER THAN MINDLESSLY GRINDING WITH AN EXCESS OF TIME."
+    },
+    {
+      question: "I PLAY X HERO, CAN YOU TEACH ME?",
+      answer: "WITHOUT A DOUBT. RANK UP ACADEMY COVERS SIMPLE AND PRACTICAL FUNDAMENTALS FOR EVERY HERO."
+    }
+  ];
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -894,7 +930,7 @@ function App() {
               backgroundPosition: "right center",
               backgroundRepeat: "no-repeat",
               width: "100%",
-              height: "50vh"
+              height: "46vh"
             }}>
               <div style={{
                 position: "absolute",
@@ -910,18 +946,16 @@ function App() {
           {/* Center Column - Fixed width yellow box */}
           <div style={{
             width: "25rem",
-            height: "calc(100% + 2rem)",
+            height: "100%",
             backgroundColor: "#FCD305",
             border: "5px solid #313338",
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "center",
-            zIndex: 10,
-            position: "relative",
-            top: "-1rem"
+            zIndex: 10
           }}>
               <div style={{
-                padding: "4rem 2rem 1rem 2rem",
+                padding: "2rem 2rem 1rem 2rem",
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -992,7 +1026,7 @@ function App() {
               backgroundPosition: "left center",
               backgroundRepeat: "no-repeat",
               width: "100%",
-              height: "50vh"
+              height: "46vh"
             }}>
               <div style={{
                 position: "absolute",
@@ -1010,7 +1044,7 @@ function App() {
       {/* Call to Action Section */}
       <section style={{
         backgroundColor: "#1a1a1a",
-        padding: "3rem 0",
+        padding: "3rem 0 1rem 0",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -1053,20 +1087,21 @@ function App() {
       {/* Full-width Alternative Text Section */}
       <section style={{
         backgroundColor: "#1a1a1a",
-        padding: "0rem 2rem",
+        padding: "2rem 2rem 3rem 2rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        width: "100%"
+        width: "100%",
+        boxSizing: "border-box"
       }}>
         <div style={{
           maxWidth: "1200px",
           width: "100%"
         }}>
           <p className="font-gaming" style={{
-            fontSize: "2.5rem",
+            fontSize: "1.8rem",
             fontWeight: "bold",
             color: "#FCD305",
             margin: "0",
@@ -1076,7 +1111,7 @@ function App() {
             OR CONTINUE WASTING HUNDREDS OF HOURS GRINDING
           </p>
           <p className="font-gaming" style={{
-            fontSize: "2.5rem",
+            fontSize: "1.8rem",
             fontWeight: "bold",
             color: "#FC4F05",
             margin: "0.5rem 0 0 0",
@@ -1085,6 +1120,110 @@ function App() {
           }}>
             WITHOUT PROGRESS
           </p>
+        </div>
+      </section>
+
+      {/* Q&A Accordion Section */}
+      <section style={{
+        backgroundColor: "#1a1a1a",
+        padding: "0 2rem 4rem 2rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        boxSizing: "border-box"
+      }}>
+        <div style={{
+          maxWidth: "800px",
+          width: "100%"
+        }}>
+
+          {faqData.map((faq, index) => (
+            <div key={index} style={{
+              marginBottom: "1rem"
+            }}>
+              {/* Question Header - Full Width */}
+              <div
+                style={{
+                  position: "relative",
+                  left: "50%",
+                  right: "50%",
+                  marginLeft: "-50vw",
+                  marginRight: "-50vw",
+                  width: "100vw",
+                  backgroundColor: "#313338",
+                  borderTop: "3px solid #313338",
+                  borderBottom: "3px solid #313338",
+                  transition: "background-color 0.3s ease",
+                  cursor: "pointer"
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#404040"}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#313338"}
+                onClick={() => toggleAccordion(index)}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    padding: "1.5rem 2rem",
+                    display: "flex",
+                    alignItems: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto"
+                  }}
+                >
+                  {/* Filled Triangle Icon */}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      transform: openAccordionIndices.includes(index) ? "rotate(90deg)" : "rotate(0deg)",
+                      transition: "transform 0.3s ease",
+                      marginRight: "1rem",
+                      flexShrink: 0
+                    }}
+                  >
+                    <polygon
+                      points="9,6 18,12 9,18"
+                      fill="#ffffff"
+                    />
+                  </svg>
+
+                  <span className="font-gaming" style={{
+                    color: "#ffffff",
+                    fontSize: "1.1rem",
+                    fontWeight: "bold",
+                    textAlign: "left",
+                    letterSpacing: "1px"
+                  }}>
+                    {faq.question}
+                  </span>
+                </div>
+              </div>
+
+              {/* Answer Content */}
+              {openAccordionIndices.includes(index) && (
+                <div style={{
+                  padding: "2rem 1.5rem",
+                  backgroundColor: "#1a1a1a",
+                  animation: "fadeIn 0.3s ease-in-out"
+                }}>
+                  <p style={{
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    lineHeight: "1.6",
+                    margin: "0",
+                    fontWeight: "400"
+                  }}>
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
