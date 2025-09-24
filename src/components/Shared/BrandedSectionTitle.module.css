@@ -1,0 +1,74 @@
+/* Branded Section Title with Responsive Lines */
+.brandedSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1A1A1A;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.line {
+  flex: 1;
+  min-width: 100px;
+  height: 2px;
+  min-height: 2px;
+  background: linear-gradient(to right, transparent 0%, rgba(252, 211, 5, 0.8) 50%, transparent 100%);
+  display: block;
+}
+
+.textContainer {
+  text-align: center;
+  margin: 0 40px;
+  color: #FCD305;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+  text-shadow: 0 0 20px rgba(252, 211, 5, 0.5);
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FCD305;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+/* Responsive Behavior */
+@media (max-width: 1124px) {
+  .brandedSection {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .line {
+    width: 60%;
+    min-width: 200px;
+  }
+
+  .textContainer {
+    margin: 0;
+    order: 0;
+  }
+}
+
+/* Special styling for branding section */
+.brandingSection {
+  /* This will be combined with .brandedSection for the first section */
+}
+
+/* Special case for branding section - remove top padding on smaller screens */
+@media (max-width: 1124px) {
+  .brandedSection.brandingSection {
+    padding-top: 0 !important;
+  }
+}

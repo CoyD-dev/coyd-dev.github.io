@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import testimonialsData from './testemonials.json';
+import { BrandedSectionTitle } from './components/Shared';
+import { Footer } from './components/Footer';
+import { CookieConsent } from './components/CookieConsent';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,7 +11,6 @@ function App() {
   const [showAllGallery, setShowAllGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [openAccordionIndices, setOpenAccordionIndices] = useState<number[]>([0]);
-  const [cookieConsent, setCookieConsent] = useState<'pending' | 'accepted' | 'rejected'>('pending');
   const benefitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollY = useRef(0);
 
@@ -60,26 +62,6 @@ function App() {
     );
   };
 
-  const handleCookieConsent = (consent: 'accepted' | 'rejected') => {
-    setCookieConsent(consent);
-    localStorage.setItem('cookieConsent', consent);
-
-    if (consent === 'accepted') {
-      // Enable Google Analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
-      }
-    } else {
-      // Disable Google Analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('consent', 'update', {
-          'analytics_storage': 'denied'
-        });
-      }
-    }
-  };
 
   const faqData = [
     {
@@ -108,22 +90,6 @@ function App() {
     }
   ];
 
-  // Check for existing cookie consent on component mount
-  useEffect(() => {
-    const savedConsent = localStorage.getItem('cookieConsent') as 'accepted' | 'rejected' | null;
-    if (savedConsent) {
-      setCookieConsent(savedConsent);
-
-      if (savedConsent === 'accepted') {
-        // Enable Google Analytics if consent was previously given
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('consent', 'update', {
-            'analytics_storage': 'granted'
-          });
-        }
-      }
-    }
-  }, []);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -368,23 +334,12 @@ function App() {
       </section>
 
       {/* Rank Up Academy Branding Section */}
-      <section id="about" className="branding-section">
-        {/* Left Line */}
-        <div className="branding-line"></div>
-
-        {/* Center Text */}
-        <div className="branding-text-container">
-          <h2 className="font-gaming branding-title">
-            RANK UP ACADEMY
-          </h2>
-          <p className="branding-subtitle">
-            WHERE YOUR IMPROVEMENT BEGINS
-          </p>
-        </div>
-
-        {/* Right Line */}
-        <div className="branding-line"></div>
-      </section>
+      <BrandedSectionTitle
+        id="about"
+        title="RANK UP ACADEMY"
+        subtitle="WHERE YOUR IMPROVEMENT BEGINS"
+        className="brandingSection"
+      />
 
       {/* Video and Introduction Section */}
       <section className="bg-gaming-dark video-section-padding">
@@ -750,26 +705,10 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="responsive-line-section">
-        {/* Left Line */}
-        <div className="responsive-line"></div>
-
-        {/* Center Text */}
-        <div className="responsive-text-container">
-          <h2 className="font-gaming" style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            letterSpacing: "2px",
-            marginBottom: "0",
-            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
-          }}>
-            TESTIMONIALS
-          </h2>
-        </div>
-
-        {/* Right Line */}
-        <div className="responsive-line"></div>
-      </section>
+      <BrandedSectionTitle
+        id="testimonials"
+        title="TESTIMONIALS"
+      />
 
       {/* Gallery Section */}
       <section className="bg-gaming-dark">
@@ -823,35 +762,17 @@ function App() {
       </section>
 
       {/* Choice Section */}
-      <section className="responsive-line-section">
-        {/* Left Line */}
-        <div className="responsive-line"></div>
-
-        {/* Choice Text */}
-        <div className="responsive-text-container">
-          <h2 className="font-gaming" style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            letterSpacing: "2px",
-            marginBottom: "8px",
-            textShadow: "0 0 20px rgba(252, 211, 5, 0.5)"
-          }}>
-            IT IS YOUR CHOICE
-          </h2>
-          <p style={{
-            fontSize: "0.875rem",
-            fontWeight: "600",
-            color: "#FCD305",
-            letterSpacing: "3px",
-            opacity: "0.9"
-          }}>
-            INSTEAD OF HITTING QUEUE AGAIN, ACT TO IMPROVE
-          </p>
-        </div>
-
-        {/* Right Line */}
-        <div className="responsive-line"></div>
-      </section>
+      <BrandedSectionTitle
+        title="IT IS YOUR CHOICE"
+        subtitle="INSTEAD OF HITTING QUEUE AGAIN, ACT TO IMPROVE"
+        titleStyle={{ marginBottom: "8px" }}
+        subtitleStyle={{
+          fontSize: "0.875rem",
+          fontWeight: "600",
+          letterSpacing: "3px",
+          opacity: "0.9"
+        }}
+      />
 
       {/* Three Column Hero Section */}
       <section id="pricing" className="pricing-section">
@@ -1097,53 +1018,7 @@ function App() {
       </section>
 
       {/* Footer Section */}
-      <footer id="contact" style={{
-        backgroundColor: "rgb(49, 51, 56)",
-        borderTop: "1px solid #313338",
-        padding: "0.5rem 0",
-        width: "100%"
-      }}>
-        <div className="footer-container">
-          {/* Left side - Links */}
-          <div className="footer-links">
-            <a
-              href="https://rankupacademy.gg/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-gaming footer-link"
-              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
-              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
-            >
-              CONTACT US
-            </a>
-            <a
-              href="https://rankupacademy.gg/terms_of_service"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-gaming footer-link"
-              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
-              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
-            >
-              TERMS OF SERVICE
-            </a>
-            <a
-              href="https://rankupacademy.gg/privacy_policy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-gaming footer-link"
-              onMouseEnter={(e) => e.currentTarget.style.color = "#0288d1"}
-              onMouseLeave={(e) => e.currentTarget.style.color = "#039be5"}
-            >
-              PRIVACY POLICY
-            </a>
-          </div>
-
-          {/* Right side - Copyright */}
-          <div className="font-gaming footer-copyright">
-            © Rank Up Academy {new Date().getFullYear()}. All rights reserved
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Image Viewer Modal */}
       {selectedImageIndex !== null && (
@@ -1231,35 +1106,7 @@ function App() {
       )}
 
       {/* Cookie Consent Banner */}
-      {cookieConsent === 'pending' && (
-        <div className="cookie-consent-overlay">
-          <div className="cookie-consent-banner">
-            <div className="cookie-consent-content">
-              <div className="cookie-consent-text">
-                <h4 className="font-gaming cookie-consent-title">WE USE COOKIES</h4>
-                <p className="cookie-consent-description">
-                  We use cookies and similar technologies to improve your experience, analyze website traffic, and personalize content.
-                  By clicking "Accept All", you consent to our use of cookies for analytics and marketing purposes.
-                </p>
-              </div>
-              <div className="cookie-consent-buttons">
-                <button
-                  onClick={() => handleCookieConsent('rejected')}
-                  className="cookie-reject-btn font-gaming"
-                >
-                  REJECT
-                </button>
-                <button
-                  onClick={() => handleCookieConsent('accepted')}
-                  className="cookie-accept-btn font-gaming"
-                >
-                  ACCEPT ALL
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <CookieConsent />
     </div>
   );
 }
