@@ -63,9 +63,10 @@
 
     <!-- Redirect to React app -->
     <script type="text/javascript">
-      // Redirect to React app after a brief moment for crawlers to read content
+      // Redirect to React app homepage after a brief moment for crawlers to read content
+      // The 404.html mechanism will then handle the routing properly
       setTimeout(function() {
-        window.location.href = '/#/privacy-policy';
+        window.location.href = '/?/privacy-policy';
       }, 100);
     </script>
   </head>
