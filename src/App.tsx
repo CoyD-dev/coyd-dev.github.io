@@ -1,20 +1,24 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { CookieConsent } from './components/CookieConsent';
 import { Navigation } from './components/Navigation';
 import { HomePage, TermsOfService, PrivacyPolicy, ContactUs } from './pages';
 
-// Component to clean up redirect markers from 404.html
+// Component to handle redirects from 404.html
 const RedirectHandler: React.FC = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // Clean up any redirect path markers from 404.html
-    // Since 404.html now serves the React app directly, we just need to clean up
+    // Check if there's a stored redirect path from 404.html
     const redirectPath = sessionStorage.getItem('redirectPath');
-    if (redirectPath) {
+    if (redirectPath && redirectPath !== '/') {
+      // Clear the stored path immediately
       sessionStorage.removeItem('redirectPath');
+      // Navigate to the intended path
+      navigate(redirectPath, { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
   return null; // This component doesn't render anything
 };
