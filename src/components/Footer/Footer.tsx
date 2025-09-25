@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 interface FooterLink {
   href: string;
   text: string;
   label: string;
+  isExternal?: boolean;
 }
 
 interface FooterProps {
@@ -16,17 +18,20 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
     {
       href: "https://rankupacademy.gg/contact",
       text: "CONTACT US",
-      label: "Contact Rank Up Academy"
+      label: "Contact Rank Up Academy",
+      isExternal: true
     },
     {
-      href: "https://rankupacademy.gg/terms_of_service",
+      href: "/terms-of-service",
       text: "TERMS OF SERVICE",
-      label: "Terms of Service"
+      label: "Terms of Service",
+      isExternal: false
     },
     {
-      href: "https://rankupacademy.gg/privacy_policy",
+      href: "/privacy-policy",
       text: "PRIVACY POLICY",
-      label: "Privacy Policy"
+      label: "Privacy Policy",
+      isExternal: false
     }
   ];
 
@@ -41,16 +46,27 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         {/* Left side - Links */}
         <div className={styles.links}>
           {footerLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`font-gaming ${styles.link}`}
-              aria-label={link.label}
-            >
-              {link.text}
-            </a>
+            link.isExternal ? (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-gaming ${styles.link}`}
+                aria-label={link.label}
+              >
+                {link.text}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                to={link.href}
+                className={`font-gaming ${styles.link} no-underline`}
+                aria-label={link.label}
+              >
+                {link.text}
+              </Link>
+            )
           ))}
         </div>
 

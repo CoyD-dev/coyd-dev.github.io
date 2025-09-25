@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
 interface NavigationLink {
   href: string;
   label: string;
+  isExternal?: boolean;
 }
 
 const Navigation: React.FC = () => {
@@ -18,6 +20,11 @@ const Navigation: React.FC = () => {
     { href: '#pricing', label: 'Pricing' },
     { href: '#faq', label: 'FAQ' },
     { href: '#contact', label: 'Contact' }
+  ];
+
+  const pageLinks: NavigationLink[] = [
+    { href: '/terms-of-service', label: 'Terms of Service' },
+    { href: '/privacy-policy', label: 'Privacy Policy' }
   ];
 
   const handleMobileMenuToggle = () => {
@@ -56,24 +63,37 @@ const Navigation: React.FC = () => {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 bg-gaming-dark backdrop-blur-sm ${styles.navShadow}`}>
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center no-underline">
             <img
               src="https://rankupacademy.gg/assets/RUA-Logo-147557a47311e385321694bba7ec05e8483dde36386908d1ef3bf1d2854d1ee5.svg"
               alt="Rank Up Academy Logo"
               className="h-10 w-auto mr-3"
             />
             <span className="font-gaming text-xl font-bold text-gaming-gold">RANK UP ACADEMY</span>
-          </div>
+          </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navigationLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming"
+                className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming text-sm"
               >
                 {link.label}
               </a>
+            ))}
+
+            {/* Page Links Separator */}
+            <div className="h-4 w-px bg-gray-600"></div>
+
+            {pageLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-gray-300 hover:text-gaming-gold transition-colors font-gaming text-sm no-underline"
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
 
@@ -166,6 +186,20 @@ const Navigation: React.FC = () => {
               >
                 {link.label}
               </a>
+            ))}
+
+            {/* Page Links Separator */}
+            <div className="w-full h-px bg-gray-600 my-4"></div>
+
+            {pageLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming no-underline"
+                onClick={closeMobileMenu}
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
         </div>

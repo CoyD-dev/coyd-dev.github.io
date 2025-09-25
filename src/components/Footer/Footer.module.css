@@ -1,9 +1,12 @@
 /* Footer Styles */
 .footer {
-  background-color: rgb(49, 51, 56);
-  border-top: 1px solid #313338;
+  background-color: #313338; /* Updated footer background color */
+  backdrop-filter: blur(4px);
+  box-shadow: 0 -8px 32px rgba(26, 26, 26, 0.8), 0 -4px 16px rgba(26, 26, 26, 0.4);
   padding: 0.5rem 0;
   width: 100%;
+  position: relative;
+  z-index: 50; /* Ensure footer is above background images */
 }
 
 .container {
@@ -13,6 +16,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   position: relative;
+  z-index: 51; /* Ensure container content is clickable */
 }
 
 .links {
@@ -25,20 +29,22 @@
 }
 
 .link {
-  color: #039be5;
+  color: #0288d1; /* Updated footer links color */
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 1px;
   transition: color 0.3s ease;
+  position: relative;
+  z-index: 52; /* Ensure links are above everything */
 }
 
 .link:hover {
-  color: #0288d1;
+  color: #fbbf24; /* gaming-gold to match navigation */
 }
 
 .copyright {
-  color: #FCD305;
+  color: #fbbf24; /* gaming-gold to match theme */
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 1px;
