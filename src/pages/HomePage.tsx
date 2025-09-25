@@ -15,6 +15,9 @@ const HomePage: React.FC = () => {
   const isRedirecting = redirectPath && redirectPath !== '/';
 
   if (isRedirecting) {
+    // Clear the redirect path immediately to prevent infinite loading
+    sessionStorage.removeItem('redirectPath');
+
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import styles from './ContactUs.module.css';
 
 const ContactUs: React.FC = () => {
-  const backgroundImageUrl = '/assets/square_tracer-hero-image.jpg';
-
   useEffect(() => {
     // Add page-specific class to body
     document.body.classList.add('contact-us-page');
@@ -16,11 +14,6 @@ const ContactUs: React.FC = () => {
 
   return (
     <div className={styles.pageContainer}>
-      {/* Full-screen background image with transparency */}
-      <div
-        className={styles.backgroundImage}
-        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
-      ></div>
 
       {/* Centered content box */}
       <div className={styles.contentBox}>
