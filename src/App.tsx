@@ -5,20 +5,16 @@ import { CookieConsent } from './components/CookieConsent';
 import { Navigation } from './components/Navigation';
 import { HomePage, TermsOfService, PrivacyPolicy, ContactUs } from './pages';
 
-// Component to handle redirects from 404.html
+// Component to clean up redirect markers from 404.html
 const RedirectHandler: React.FC = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
-    // Check if there's a stored redirect path from 404.html
+    // Clean up any redirect path markers from 404.html
+    // Since 404.html now serves the React app directly, we just need to clean up
     const redirectPath = sessionStorage.getItem('redirectPath');
-    if (redirectPath && redirectPath !== '/') {
-      // Clear the stored path immediately
+    if (redirectPath) {
       sessionStorage.removeItem('redirectPath');
-      // Navigate to the intended path
-      navigate(redirectPath, { replace: true });
     }
-  }, [navigate]);
+  }, []);
 
   return null; // This component doesn't render anything
 };

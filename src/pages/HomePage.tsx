@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import { BrandedSectionTitle } from '../components/Shared';
 import { Hero } from '../components/Hero';
 import { VideoIntro } from '../components/VideoIntro';
@@ -11,37 +10,7 @@ import { AlternativeText } from '../components/AlternativeText';
 import { FAQ } from '../components/FAQ';
 
 const HomePage: React.FC = () => {
-  const [isRedirecting, setIsRedirecting] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    // Only check for redirects if we're actually on the homepage route
-    if (location.pathname === '/') {
-      const redirectPath = sessionStorage.getItem('redirectPath');
-      if (redirectPath && redirectPath !== '/') {
-        setIsRedirecting(true);
-        // Don't clear sessionStorage here - let RedirectHandler handle it
-        // Set a timeout to reset loading if navigation doesn't happen
-        setTimeout(() => {
-          setIsRedirecting(false);
-        }, 3000); // Reset after 3 seconds if no navigation occurs
-      }
-    } else {
-      // If we're not on homepage, we're not redirecting
-      setIsRedirecting(false);
-    }
-  }, [location.pathname]);
-
-  if (isRedirecting) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gaming-gold mx-auto mb-4"></div>
-          <p className="text-gaming-gold font-semibold">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  // No more redirect handling needed - 404.html serves React app directly!
 
   return (
     <>

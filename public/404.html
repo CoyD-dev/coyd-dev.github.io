@@ -62,22 +62,18 @@
     <link rel="manifest" href="/manifest.json" />
     <title>Rank Up Academy - Overwatch 2 Coaching | From Getting Carried to Being the Carry</title>
 
-    <!-- Instant redirect for React Router -->
+    <!-- Store the path for React Router -->
     <script type="text/javascript">
-      // Store the current path for later use
+      // Store the current path for React Router to handle
       sessionStorage.setItem('redirectPath', window.location.pathname);
-
-      // Instant redirect to homepage
-      window.location.replace('/');
     </script>
   </head>
-  <body style="margin: 0; padding: 0; background-color: #1a1a1a;">
-    <!-- Minimal content to prevent flash -->
-    <noscript>
-      <div style="padding: 2rem; text-align: center; color: white;">
-        <h3>JavaScript Required</h3>
-        <p>This application requires JavaScript to run. Please enable JavaScript in your browser or <a href="/" style="color: #fbbf24;">visit our homepage</a>.</p>
-      </div>
-    </noscript>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file serves the React app for GitHub Pages SPA routing.
+      The build step will place the bundled scripts into the <body> tag.
+    -->
   </body>
 </html>
