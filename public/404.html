@@ -62,36 +62,22 @@
     <link rel="manifest" href="/manifest.json" />
     <title>Rank Up Academy - Overwatch 2 Coaching | From Getting Carried to Being the Carry</title>
 
-    <!-- Simple redirect for React Router -->
+    <!-- Instant redirect for React Router -->
     <script type="text/javascript">
       // Store the current path for later use
       sessionStorage.setItem('redirectPath', window.location.pathname);
 
-      // Redirect to homepage after a brief moment for social media crawlers
-      setTimeout(function() {
-        window.location.href = '/';
-      }, 500);
+      // Instant redirect to homepage
+      window.location.replace('/');
     </script>
   </head>
-  <body style="margin: 0; padding: 0; background-color: #1a1a1a; color: white; font-family: 'Quantico', sans-serif;">
-    <!-- Content visible to social media crawlers and users without JavaScript -->
-    <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
-      <img src="https://rankupacademy.gg/assets/RUA-Logo-147557a47311e385321694bba7ec05e8483dde36386908d1ef3bf1d2854d1ee5.svg" alt="Rank Up Academy Logo" style="height: 80px; margin-bottom: 2rem;">
-      <h1 style="color: #fbbf24; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Rank Up Academy</h1>
-      <h2 style="color: #fbbf24; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem;">Professional Overwatch 2 Coaching & Esports Training</h2>
-      <p style="color: #d1d5db; font-size: 1.25rem; max-width: 600px; line-height: 1.6; margin-bottom: 2rem;">From Getting Carried to Being the Carry - Master heroes like Tracer, Genji, Ana, and Reinhardt with personalized VOD reviews and community-driven learning.</p>
-      <div style="margin-top: 2rem;">
-        <p style="color: #9ca3af; font-size: 1rem;">Redirecting to the requested page...</p>
-      </div>
-    </div>
-
-    <!-- React app root for JavaScript users -->
+  <body style="margin: 0; padding: 0; background-color: #1a1a1a;">
+    <!-- Minimal content to prevent flash -->
     <noscript>
-      <div style="padding: 2rem; text-align: center; background-color: #2d2d2d; margin: 2rem;">
-        <h3 style="color: #fbbf24;">JavaScript Required</h3>
-        <p style="color: #d1d5db;">This application requires JavaScript to run. Please enable JavaScript in your browser.</p>
+      <div style="padding: 2rem; text-align: center; color: white;">
+        <h3>JavaScript Required</h3>
+        <p>This application requires JavaScript to run. Please enable JavaScript in your browser or <a href="/" style="color: #fbbf24;">visit our homepage</a>.</p>
       </div>
     </noscript>
-    <div id="root"></div>
   </body>
 </html>
