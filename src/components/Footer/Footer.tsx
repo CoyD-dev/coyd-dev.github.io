@@ -16,10 +16,10 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   const footerLinks: FooterLink[] = [
     {
-      href: "https://rankupacademy.gg/contact",
+      href: "/contact-us",
       text: "CONTACT US",
       label: "Contact Rank Up Academy",
-      isExternal: true
+      isExternal: false
     },
     {
       href: "/terms-of-service",

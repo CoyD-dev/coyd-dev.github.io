@@ -23,6 +23,7 @@ const Navigation: React.FC = () => {
   ];
 
   const pageLinks: NavigationLink[] = [
+    { href: '/contact-us', label: 'Contact Us' },
     { href: '/terms-of-service', label: 'Terms of Service' },
     { href: '/privacy-policy', label: 'Privacy Policy' }
   ];

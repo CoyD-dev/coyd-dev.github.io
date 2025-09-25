@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { CookieConsent } from './components/CookieConsent';
 import { Navigation } from './components/Navigation';
-import { HomePage, TermsOfService, PrivacyPolicy } from './pages';
+import { HomePage, TermsOfService, PrivacyPolicy, ContactUs } from './pages';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
 
         {/* Footer Section */}
