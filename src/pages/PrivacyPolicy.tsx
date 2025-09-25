@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './PrivacyPolicy.module.css';
 
 const PrivacyPolicy: React.FC = () => {
   const backgroundImageUrl = '/assets/square_tracer-hero-image.jpg';
+
+  useEffect(() => {
+    // Add page-specific class to body
+    document.body.classList.add('privacy-policy-page');
+
+    // Cleanup function to remove class when component unmounts
+    return () => {
+      document.body.classList.remove('privacy-policy-page');
+    };
+  }, []);
 
   return (
     <div className={styles.pageContainer}>

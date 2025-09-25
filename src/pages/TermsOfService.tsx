@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './TermsOfService.module.css';
 
 const TermsOfService: React.FC = () => {
   const backgroundImageUrl = '/assets/square_tracer-hero-image.jpg';
+
+  useEffect(() => {
+    // Add page-specific class to body
+    document.body.classList.add('terms-of-service-page');
+
+    // Cleanup function to remove class when component unmounts
+    return () => {
+      document.body.classList.remove('terms-of-service-page');
+    };
+  }, []);
 
   return (
     <div className={styles.pageContainer}>

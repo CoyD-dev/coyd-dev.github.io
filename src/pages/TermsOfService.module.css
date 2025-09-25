@@ -1,13 +1,13 @@
 /* Terms of Service Page Styles */
 
-/* Prevent body scrolling when this page is active */
-:global(body) {
+/* Page-specific body class to prevent scrolling when this page is active */
+:global(body.terms-of-service-page) {
   overflow: hidden !important;
   height: 100vh !important;
 }
 
 /* Make footer fixed at bottom of viewport on this page */
-:global(footer) {
+:global(body.terms-of-service-page footer) {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
@@ -16,7 +16,7 @@
 }
 
 /* Ensure navigation stays fixed at top */
-:global(nav) {
+:global(body.terms-of-service-page nav) {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;

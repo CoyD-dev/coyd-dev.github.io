@@ -14,12 +14,11 @@ const Navigation: React.FC = () => {
   const [isClosing, setIsClosing] = useState(false);
 
   const navigationLinks: NavigationLink[] = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#testimonials', label: 'Testimonials' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#faq', label: 'FAQ' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/#', label: 'Home' },
+    { href: '/#about', label: 'About' },
+    { href: '/#testimonials', label: 'Testimonials' },
+    { href: '/#pricing', label: 'Pricing' },
+    { href: '/#faq', label: 'FAQ' }
   ];
 
   const pageLinks: NavigationLink[] = [
@@ -182,7 +181,7 @@ const Navigation: React.FC = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-2xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming"
+                className="text-xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming no-underline"
                 onClick={closeMobileMenu}
               >
                 {link.label}
@@ -196,7 +195,10 @@ const Navigation: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-xl text-gray-300 hover:text-gaming-gold transition-colors font-gaming no-underline"
+                className="text-xl transition-colors font-gaming no-underline"
+                style={{ color: '#0288d1' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#fbbf24'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#0288d1'}
                 onClick={closeMobileMenu}
               >
                 {link.label}

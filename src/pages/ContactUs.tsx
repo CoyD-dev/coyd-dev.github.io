@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './ContactUs.module.css';
 
 const ContactUs: React.FC = () => {
   const backgroundImageUrl = '/assets/square_tracer-hero-image.jpg';
+
+  useEffect(() => {
+    // Add page-specific class to body
+    document.body.classList.add('contact-us-page');
+
+    // Cleanup function to remove class when component unmounts
+    return () => {
+      document.body.classList.remove('contact-us-page');
+    };
+  }, []);
 
   return (
     <div className={styles.pageContainer}>
