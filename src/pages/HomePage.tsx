@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { BrandedSectionTitle } from '../components/Shared';
 import { Hero } from '../components/Hero';
 import { VideoIntro } from '../components/VideoIntro';
@@ -10,14 +11,23 @@ import { AlternativeText } from '../components/AlternativeText';
 import { FAQ } from '../components/FAQ';
 
 const HomePage: React.FC = () => {
-  // Check if we're redirecting from 404.html to prevent content flash
-  const redirectPath = sessionStorage.getItem('redirectPath');
-  const isRedirecting = redirectPath && redirectPath !== '/';
+  const [isRedirecting, setIsRedirecting] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Only check for redirects if we're actually on the homepage route
+    if (location.pathname === '/') {
+      const redirectPath = sessionStorage.getItem('redirectPath');
+      if (redirectPath && redirectPath !== '/') {
+        setIsRedirecting(true);
+        // Clear the redirect path to prevent loops
+        sessionStorage.removeItem('redirectPath');
+        // The RedirectHandler will handle the actual navigation
+      }
+    }
+  }, [location.pathname]);
 
   if (isRedirecting) {
-    // Clear the redirect path immediately to prevent infinite loading
-    sessionStorage.removeItem('redirectPath');
-
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
