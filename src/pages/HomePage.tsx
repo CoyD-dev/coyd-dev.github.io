@@ -20,10 +20,15 @@ const HomePage: React.FC = () => {
       const redirectPath = sessionStorage.getItem('redirectPath');
       if (redirectPath && redirectPath !== '/') {
         setIsRedirecting(true);
-        // Clear the redirect path to prevent loops
-        sessionStorage.removeItem('redirectPath');
-        // The RedirectHandler will handle the actual navigation
+        // Don't clear sessionStorage here - let RedirectHandler handle it
+        // Set a timeout to reset loading if navigation doesn't happen
+        setTimeout(() => {
+          setIsRedirecting(false);
+        }, 3000); // Reset after 3 seconds if no navigation occurs
       }
+    } else {
+      // If we're not on homepage, we're not redirecting
+      setIsRedirecting(false);
     }
   }, [location.pathname]);
 

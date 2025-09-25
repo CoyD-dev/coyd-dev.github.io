@@ -13,8 +13,9 @@ const RedirectHandler: React.FC = () => {
     // Check if there's a stored redirect path from 404.html
     const redirectPath = sessionStorage.getItem('redirectPath');
     if (redirectPath && redirectPath !== '/') {
-      // Navigate to the intended path immediately
-      // (sessionStorage is cleared by HomePage to prevent loading loops)
+      // Clear the stored path immediately
+      sessionStorage.removeItem('redirectPath');
+      // Navigate to the intended path
       navigate(redirectPath, { replace: true });
     }
   }, [navigate]);
