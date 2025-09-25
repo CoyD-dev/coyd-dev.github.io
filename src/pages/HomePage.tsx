@@ -9,7 +9,22 @@ import { CallToAction } from '../components/CallToAction';
 import { AlternativeText } from '../components/AlternativeText';
 import { FAQ } from '../components/FAQ';
 
-const HomePage: React.FC = () => {
+interface HomePageProps {
+  isRedirecting: boolean;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ isRedirecting }) => {
+  if (isRedirecting) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gaming-gold mx-auto mb-4"></div>
+          <p className="text-gaming-gold font-semibold">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Hero />
