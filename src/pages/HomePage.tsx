@@ -9,11 +9,11 @@ import { CallToAction } from '../components/CallToAction';
 import { AlternativeText } from '../components/AlternativeText';
 import { FAQ } from '../components/FAQ';
 
-interface HomePageProps {
-  isRedirecting: boolean;
-}
+const HomePage: React.FC = () => {
+  // Check if we're redirecting from 404.html to prevent content flash
+  const redirectPath = sessionStorage.getItem('redirectPath');
+  const isRedirecting = redirectPath && redirectPath !== '/';
 
-const HomePage: React.FC<HomePageProps> = ({ isRedirecting }) => {
   if (isRedirecting) {
     return (
       <div className="min-h-screen flex items-center justify-center">

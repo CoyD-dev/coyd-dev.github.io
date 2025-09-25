@@ -24,28 +24,6 @@ const RedirectHandler: React.FC = () => {
 };
 
 function App() {
-  // Check immediately if we have a redirect to prevent any homepage rendering
-  const redirectPath = sessionStorage.getItem('redirectPath');
-  const hasRedirect = redirectPath && redirectPath !== '/';
-
-  // If we have a redirect, show loading immediately and let RedirectHandler handle the navigation
-  if (hasRedirect) {
-    return (
-      <Router>
-        <div className="min-h-screen bg-gaming-dark text-white">
-          <RedirectHandler />
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gaming-gold mx-auto mb-4"></div>
-              <p className="text-gaming-gold font-semibold">Loading...</p>
-            </div>
-          </div>
-        </div>
-      </Router>
-    );
-  }
-
-  // No redirect, render normal app
   return (
     <Router>
       <div className="min-h-screen bg-gaming-dark text-white">
@@ -53,7 +31,7 @@ function App() {
         <Navigation />
 
         <Routes>
-          <Route path="/" element={<HomePage isRedirecting={false} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact-us" element={<ContactUs />} />

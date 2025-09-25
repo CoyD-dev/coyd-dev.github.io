@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // Default: block analytics until user consents
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied'
+    });
+
+    gtag('js', new Date());
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0R6SVGWF3"></script>
+
+  <script>
+    gtag('config', 'G-X0R6SVGWF3', { send_page_view: false });
+  </script>
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://rankupacademy.gg/assets/favicon-535b957af740b3ee80342a62f0f8307accb0ffdaa92883aa0ff368be78065e36.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FCD305" />
+    <meta
+      name="description"
+      content="Professional Overwatch 2 coaching and esports training academy. Master heroes like Tracer, Genji, Ana, and Reinhardt. From Bronze to Top 500 - personalized VOD reviews and community-driven learning."
+    />
+    <meta
+      name="keywords"
+      content="Overwatch 2, esports academy, gaming coaching, Tracer coaching, Genji training, Ana gameplay, Reinhardt guide, Widowmaker tips, Mercy coaching, D.Va strategies, Winston tactics, Lucio techniques, professional gaming, rank up, VOD review, esports training, competitive gaming, hero mastery, game sense, aim training, positioning, ultimate timing"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://coyd-dev.github.io/terms-of-service" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Terms of Service - Rank Up Academy" />
+    <meta property="og:description" content="Professional Overwatch 2 Coaching & Esports Training - Terms of Service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://coyd-dev.github.io/terms-of-service" />
+    <meta property="og:image" content="https://coyd-dev.github.io/social_media_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Rank Up Academy - From Getting Carried to Being the Carry" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Terms of Service - Rank Up Academy" />
+    <meta name="twitter:description" content="Professional Overwatch 2 Coaching & Esports Training - Terms of Service" />
+    <meta name="twitter:image" content="https://coyd-dev.github.io/social_media_preview.png" />
+    <meta name="twitter:image:alt" content="Rank Up Academy - From Getting Carried to Being the Carry" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Terms of Service - Rank Up Academy - Overwatch 2 Coaching</title>
+
+    <!-- Immediate redirect to React app with route preservation -->
+    <script type="text/javascript">
+      // For crawlers: let them see this page
+      // For users: redirect immediately to React app
+
+      // Simple bot detection
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isBot = /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/i.test(userAgent);
+
+      if (!isBot) {
+        // Human user - redirect to React app immediately
+        sessionStorage.setItem('redirectPath', '/terms-of-service');
+        window.location.replace('/');
+      }
+      // If it's a bot, let the page load normally for crawling
+    </script>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #1a1a1a; color: white; font-family: 'Quantico', sans-serif;">
+    <!-- Content for crawlers and no-JS users -->
+    <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+      <h1 style="color: #fbbf24; text-align: center;">Terms of Service</h1>
+      <p>This page contains the Terms of Service for Rank Up Academy's Overwatch 2 coaching and esports training services.</p>
+
+      <noscript>
+        <p style="background: #333; padding: 1rem; border-radius: 8px;">
+          <strong>JavaScript Required:</strong> This application requires JavaScript to run.
+          Please enable JavaScript in your browser or <a href="/" style="color: #fbbf24;">visit our homepage</a>.
+        </p>
+      </noscript>
+
+      <!-- Loading message for users (will be hidden quickly by redirect) -->
+      <div id="loading" style="text-align: center; margin-top: 2rem;">
+        <p>Loading Terms of Service...</p>
+        <p><a href="/" style="color: #fbbf24;">← Return to homepage</a></p>
+      </div>
+    </div>
+  </body>
+</html>
