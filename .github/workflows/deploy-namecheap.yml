@@ -1,0 +1,98 @@
+name: Deploy to Namecheap cPanel
+
+on:
+  push:
+    branches: [ release ]
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm test -- --coverage --watchAll=false
+
+    - name: Build application
+      run: npm run build
+
+    - name: Create .htaccess for React Router
+      run: |
+        cat > build/.htaccess << 'EOF'
+        # React Router SPA Configuration
+        RewriteEngine On
+        RewriteBase /
+
+        # Handle React Router
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-l
+        RewriteRule . /index.html [L]
+
+        # Force HTTPS
+        RewriteCond %{HTTPS} off
+        RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+        # Gzip Compression
+        <IfModule mod_deflate.c>
+          AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css
+          AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+          AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+        </IfModule>
+
+        # Browser Caching
+        <IfModule mod_expires.c>
+          ExpiresActive On
+          ExpiresByType text/css "access plus 1 year"
+          ExpiresByType application/javascript "access plus 1 year"
+          ExpiresByType image/png "access plus 1 year"
+          ExpiresByType image/jpg "access plus 1 year"
+          ExpiresByType image/jpeg "access plus 1 year"
+          ExpiresByType image/gif "access plus 1 year"
+          ExpiresByType image/svg+xml "access plus 1 year"
+        </IfModule>
+        EOF
+
+    - name: Deploy to cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.CPANEL_FTP_SERVER }}
+        username: ${{ secrets.CPANEL_FTP_USERNAME }}
+        password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+        local-dir: build/
+        server-dir: public_html/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env*
+
+    - name: Verify deployment
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "🌐 Site should be available at: https://rankupacademy.com"
+        echo "📊 Build size information:"
+        du -sh build/
+        ls -la build/
+
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "✅ Deployment successful to Namecheap cPanel"
+        else
+          echo "❌ Deployment failed - check logs above"
+        fi
