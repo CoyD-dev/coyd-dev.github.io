@@ -156,7 +156,6 @@
 
   .contentBox {
     padding: 1.5rem;
-    max-width: none;
     min-height: 20rem; /* Smaller minimum height on mobile */
   }
 
