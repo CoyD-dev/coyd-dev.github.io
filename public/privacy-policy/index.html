@@ -63,11 +63,14 @@
 
     <!-- Redirect to React app -->
     <script type="text/javascript">
-      // Redirect to React app homepage after a brief moment for crawlers to read content
-      // The 404.html mechanism will then handle the routing properly
-      setTimeout(function() {
-        window.location.href = '/?/privacy-policy';
-      }, 100);
+      // For social media crawlers - don't redirect, just show this content
+      // For human users - redirect to homepage which will trigger 404.html mechanism
+      var isBot = /bot|crawler|spider|crawling/i.test(navigator.userAgent);
+      if (!isBot) {
+        setTimeout(function() {
+          window.location.href = '/';
+        }, 200);
+      }
     </script>
   </head>
   <body style="margin: 0; padding: 0; background-color: #1a1a1a; color: white; font-family: 'Quantico', sans-serif;">
