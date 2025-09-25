@@ -1,100 +1,47 @@
 import React from 'react';
+import styles from './PrivacyPolicy.module.css';
 
 const PrivacyPolicy: React.FC = () => {
+  const backgroundImageUrl = '/assets/square_tracer-hero-image.jpg';
+
   return (
-    <div className="min-h-screen bg-gaming-dark text-white py-20">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-gaming font-bold text-gaming-gold mb-8">
-          Privacy Policy
-        </h1>
+    <div className={styles.pageContainer}>
+      {/* Full-screen background image with transparency */}
+      <div
+        className={styles.backgroundImage}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      ></div>
 
-        <div className="prose prose-invert max-w-none">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              1. Information We Collect
-            </h2>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              We collect information you provide directly to us, such as:
-            </p>
-            <ul className="list-disc list-inside text-gray-300 space-y-2">
-              <li>Contact information (name, email address)</li>
-              <li>Gaming preferences and skill level</li>
-              <li>Training goals and objectives</li>
-              <li>Communication preferences</li>
-            </ul>
-          </section>
+      {/* Centered content box */}
+      <div className={styles.contentBox}>
+        <div className={styles.content}>
+          <h1 className={`font-gaming ${styles.title}`}>
+            Privacy Policy
+          </h1>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              2. How We Use Your Information
-            </h2>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              We use the information we collect to:
-            </p>
-            <ul className="list-disc list-inside text-gray-300 space-y-2">
-              <li>Provide personalized coaching services</li>
-              <li>Communicate about training programs</li>
-              <li>Improve our educational content</li>
-              <li>Send relevant updates and announcements</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              3. Information Sharing
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              4. Data Security
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              5. Cookies and Analytics
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              We use cookies and similar technologies to enhance your experience and analyze website usage patterns.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              6. Your Rights
-            </h2>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              You have the right to:
-            </p>
-            <ul className="list-disc list-inside text-gray-300 space-y-2">
-              <li>Access your personal information</li>
-              <li>Correct inaccurate data</li>
-              <li>Request deletion of your data</li>
-              <li>Opt-out of marketing communications</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gaming-gold mb-4">
-              7. Contact Us
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              If you have questions about this Privacy Policy, please contact us through our official channels.
-            </p>
-          </section>
-
-          <div className="mt-12 pt-8 border-t border-gray-700">
-            <p className="text-sm text-gray-400">
-              Last updated: September 2025
+          <div className={styles.section}>
+            <p className={styles.sectionText}>
+              We limit the collection of personal information to your provided username and email address, assuring you that we do not disclose such details to external parties. Rigorous measures are implemented for the confidential storage and management of personal data. Please note that your content, excluding credit card information, may be transmitted unencrypted, adapting to technical necessities of networks or devices.
             </p>
           </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionText}>
+              It is important to highlight that we do not have access to your credit card information, as it is securely handled by our payment gateway providers. Rest assured, credit/debit card details and personally identifiable information are not stored, sold, shared, rented, or leased to any third parties.
+            </p>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionText}>
+              Our Website Policies and Terms & Conditions may undergo occasional changes or updates to align with evolving legal requirements and business practices. We encourage users to periodically review our policies to stay informed about how we protect and handle their information.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.footer}>
+          <p className={styles.footerText}>
+            Last updated: September 2025
+          </p>
         </div>
       </div>
     </div>
