@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Up Academy - Design System Showcase</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            /* Primary Colors */
+            --gaming-gold: #FCD305;
+            --gaming-gold-hover: #EFC700;
+            --gaming-orange: #FC4F05;
+
+            /* Background Colors */
+            --gaming-dark: #1A1A1A;
+            --gaming-elements: #313338;
+
+            /* Text Colors */
+            --text-white: #FFFFFF;
+            --text-gray: #D1D5DB;
+
+            /* Special Colors */
+            --frame-bg: rgba(245, 245, 245, 0.8);
+
+            /* Shadows */
+            --shadow-gold: 0 0 20px rgba(252, 211, 5, 0.5);
+            --shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+            --spacing-4xl: 96px;
+        }
+
+        /* ==================== GLOBAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gaming-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .font-gaming {
+            font-family: 'Quantico', 'Inter', sans-serif;
+        }
+
+        /* ==================== LAYOUT ==================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--gaming-dark) 0%, #2a2a2a 100%);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 3px solid var(--gaming-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(252, 211, 5, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Quantico', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gaming-gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--text-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            background-color: var(--gaming-elements);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .nav a {
+            font-family: 'Quantico', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-gray);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gaming-gold);
+        }
+
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--gaming-elements);
+        }
+
+        .section-title {
+            font-family: 'Quantico', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gaming-gold);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-family: 'Quantico', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-white);
+            text-transform: uppercase;
+            margin: 2rem 0 1rem 0;
+        }
+
+        /* ==================== COLOR PALETTE ==================== */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .color-card {
+            background-color: var(--gaming-elements);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .color-swatch {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quantico', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .color-info {
+            padding: 1.5rem;
+        }
+
+        .color-name {
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: var(--text-gray);
+            background-color: var(--gaming-dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .color-usage {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* ==================== TYPOGRAPHY ==================== */
+        .typography-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .typography-sample {
+            background-color: var(--gaming-elements);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--gaming-gold);
+        }
+
+        .typography-label {
+            font-size: 12px;
+            color: var(--gaming-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .typography-spec {
+            font-size: 12px;
+            color: var(--text-gray);
+            font-family: 'Courier New', monospace;
+            background-color: var(--gaming-dark);
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* Typography Samples */
+        .typo-hero-main {
+            font-family: 'Quantico', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .typo-hero-secondary {
+            font-family: 'Quantico', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .typo-nav-button {
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .typo-section-title {
+            font-family: 'Quantico', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .typo-benefit-title {
+            font-family: 'Quantico', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+
+        .typo-benefit-desc {
+            font-family: 'Quantico', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        .typo-price {
+            font-family: 'Quantico', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .typo-faq-question {
+            font-family: 'Quantico', sans-serif;
+            font-size: 17.6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        .typo-faq-answer {
+            font-family: 'Quantico', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .typo-footer {
+            font-family: 'Quantico', sans-serif;
+            font-size: 14.4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .button-sample {
+            background-color: var(--gaming-elements);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--gaming-gold);
+            color: var(--gaming-dark);
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-gold);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gaming-gold-hover);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(252, 211, 5, 0.7);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gaming-gold);
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 2px solid var(--gaming-gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--gaming-gold);
+            color: var(--gaming-dark);
+        }
+
+        .btn-disabled {
+            background-color: var(--gaming-gold);
+            color: var(--gaming-dark);
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+            display: inline-block;
+        }
+
+        .button-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ==================== CARDS ==================== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--gaming-elements);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-dark);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-family: 'Quantico', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gaming-gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .card-framed {
+            background-color: var(--frame-bg);
+            color: var(--gaming-dark);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-framed .card-title {
+            color: var(--gaming-dark);
+        }
+
+        .card-framed .card-content {
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        /* ==================== SPACING ==================== */
+        .spacing-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .spacing-item {
+            background-color: var(--gaming-elements);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .spacing-visual {
+            background-color: var(--gaming-gold);
+            height: 40px;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .spacing-label {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--text-white);
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .spacing-value {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .animation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .animation-demo {
+            background-color: var(--gaming-elements);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: var(--gaming-gold);
+            border-radius: 8px;
+            margin: 2rem auto;
+        }
+
+        .anim-fade {
+            animation: fadeIn 2s ease-in-out infinite;
+        }
+
+        .anim-slide {
+            animation: slideIn 2s ease-in-out infinite;
+        }
+
+        .anim-scale {
+            animation: scaleUp 2s ease-in-out infinite;
+        }
+
+        .anim-bounce {
+            animation: bounce 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        @keyframes fadeIn {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0%, 100% { transform: translateX(-20px); }
+            50% { transform: translateX(0); }
+        }
+
+        @keyframes scaleUp {
+            0%, 100% { transform: scale(0.8); }
+            50% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animation-label {
+            font-family: 'Quantico', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-white);
+            text-transform: uppercase;
+        }
+
+        .animation-spec {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        .breakpoint-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .breakpoint-item {
+            background-color: var(--gaming-elements);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .breakpoint-name {
+            font-family: 'Quantico', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gaming-gold);
+            text-transform: uppercase;
+        }
+
+        .breakpoint-value {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background-color: var(--gaming-elements);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            font-family: 'Quantico', sans-serif;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .nav ul {
+                gap: 1rem;
+            }
+
+            .color-grid,
+            .button-grid,
+            .card-grid,
+            .animation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .typo-benefit-title {
+                font-size: 48px;
+            }
+        }
+
+        /* ==================== CODE BLOCKS ==================== */
+        .code-block {
+            background-color: var(--gaming-dark);
+            border: 1px solid var(--gaming-elements);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--gaming-gold);
+        }
+
+        /* ==================== ICONS ==================== */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .icon-sample {
+            background-color: var(--gaming-elements);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            background-color: var(--gaming-gold);
+            border-radius: 8px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .icon-label {
+            font-family: 'Quantico', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-white);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Rank Up Academy</h1>
+            <p>Design System Showcase - Visual Style Guide</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#spacing">Spacing</a></li>
+                <li><a href="#animations">Animations</a></li>
+                <li><a href="#responsive">Responsive</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Colors Section -->
+    <section id="colors" class="section">
+        <div class="container">
+            <h2 class="section-title">Color Palette</h2>
+
+            <h3 class="section-subtitle">Primary Colors</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #FCD305; color: #1A1A1A;">
+                        #FCD305
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Gaming Gold</div>
+                        <div class="color-hex">#FCD305</div>
+                        <div class="color-usage">Primary buttons, headings, accent elements</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #EFC700; color: #1A1A1A;">
+                        #EFC700
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Gaming Gold Hover</div>
+                        <div class="color-hex">#EFC700</div>
+                        <div class="color-usage">Hover states for gold elements</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #FC4F05; color: #FFFFFF;">
+                        #FC4F05
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Contrast Orange</div>
+                        <div class="color-hex">#FC4F05</div>
+                        <div class="color-usage">Important highlights, emphasis elements</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Background Colors</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #1A1A1A; color: #FFFFFF;">
+                        #1A1A1A
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Main Background</div>
+                        <div class="color-hex">#1A1A1A</div>
+                        <div class="color-usage">Primary page background, dark sections</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #313338; color: #FFFFFF;">
+                        #313338
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Element Background</div>
+                        <div class="color-hex">#313338</div>
+                        <div class="color-usage">Cards, containers, navigation bar</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: rgba(245, 245, 245, 0.8); color: #1A1A1A;">
+                        rgba(245, 245, 245, 0.8)
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Frame Background</div>
+                        <div class="color-hex">#F5F5F5 (80%)</div>
+                        <div class="color-usage">Semi-transparent overlays, information boxes</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Text Colors</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #FFFFFF; color: #1A1A1A;">
+                        #FFFFFF
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Primary Text</div>
+                        <div class="color-hex">#FFFFFF</div>
+                        <div class="color-usage">Main headings, primary content</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: #D1D5DB; color: #1A1A1A;">
+                        #D1D5DB
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary Text</div>
+                        <div class="color-hex">#D1D5DB</div>
+                        <div class="color-usage">Body text, descriptions, supporting content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography" class="section">
+        <div class="container">
+            <h2 class="section-title">Typography System</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">
+                Font Family: <strong style="color: var(--gaming-gold);">Quantico</strong> (Weights: 400 Regular, 700 Bold)
+            </p>
+
+            <div class="typography-grid">
+                <!-- Hero Section -->
+                <div class="typography-sample">
+                    <div class="typography-label">Hero Section - Main Title</div>
+                    <div class="typography-spec">font-size: 36px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-hero-main" style="color: var(--gaming-gold);">
+                        FROM GETTING CARRIED TO BEING THE CARRY
+                    </div>
+                </div>
+
+                <div class="typography-sample">
+                    <div class="typography-label">Hero Section - Secondary Text</div>
+                    <div class="typography-spec">font-size: 20px | font-weight: 400 (Regular)</div>
+                    <div class="typo-hero-secondary" style="color: var(--text-gray);">
+                        We will teach you how to rank up in Overwatch 2
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="typography-sample">
+                    <div class="typography-label">Navigation & Buttons</div>
+                    <div class="typography-spec">font-size: 18px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-nav-button" style="color: var(--gaming-gold);">
+                        START NOW
+                    </div>
+                </div>
+
+                <!-- Body Sections -->
+                <div class="typography-sample">
+                    <div class="typography-label">Section Title</div>
+                    <div class="typography-spec">font-size: 32px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-section-title" style="color: var(--text-white);">
+                        TESTIMONIALS
+                    </div>
+                </div>
+
+                <div class="typography-sample">
+                    <div class="typography-label">Benefits Section - Title</div>
+                    <div class="typography-spec">font-size: 64px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-benefit-title" style="color: var(--gaming-gold);">
+                        TIME
+                    </div>
+                </div>
+
+                <div class="typography-sample">
+                    <div class="typography-label">Benefits Section - Description</div>
+                    <div class="typography-spec">font-size: 20px | font-weight: 400 (Regular)</div>
+                    <div class="typo-benefit-desc">
+                        How many hours have you poured into the game without seeing the results you want? Break free from the cycle of stagnation.
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="typography-sample">
+                    <div class="typography-label">Pricing - Price Display</div>
+                    <div class="typography-spec">font-size: 32px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-price" style="color: var(--gaming-gold);">
+                        $75 / MONTH
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="typography-sample">
+                    <div class="typography-label">FAQ - Question</div>
+                    <div class="typography-spec">font-size: 17.6px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-faq-question" style="color: var(--text-white);">
+                        AM I GUARANTEED TO RANK UP?
+                    </div>
+                </div>
+
+                <div class="typography-sample">
+                    <div class="typography-label">FAQ - Answer</div>
+                    <div class="typography-spec">font-size: 16px | font-weight: 400 (Regular)</div>
+                    <div class="typo-faq-answer" style="color: var(--text-gray);">
+                        Achieving a higher rank depends on your commitment. If you implement our feedback and put in the effort, you will rank up.
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="typography-sample">
+                    <div class="typography-label">Footer Text</div>
+                    <div class="typography-spec">font-size: 14.4px | font-weight: 700 (Bold) | uppercase</div>
+                    <div class="typo-footer" style="color: var(--text-gray);">
+                        © RANK UP ACADEMY 2025. ALL RIGHTS RESERVED
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section id="buttons" class="section">
+        <div class="container">
+            <h2 class="section-title">Buttons</h2>
+
+            <div class="button-grid">
+                <div class="button-sample">
+                    <button class="btn-primary">Primary Button</button>
+                    <div class="button-label">Gold CTA - Hover for effect</div>
+                    <div class="code-block">
+                        <code>background: #FCD305<br>hover: #EFC700 + scale(1.05)</code>
+                    </div>
+                </div>
+
+                <div class="button-sample">
+                    <button class="btn-secondary">Secondary Button</button>
+                    <div class="button-label">Outlined - Hover for effect</div>
+                    <div class="code-block">
+                        <code>border: 2px solid #FCD305<br>hover: bg #FCD305</code>
+                    </div>
+                </div>
+
+                <div class="button-sample">
+                    <button class="btn-disabled">Disabled Button</button>
+                    <div class="button-label">Disabled State - 50% opacity</div>
+                    <div class="code-block">
+                        <code>opacity: 0.5<br>cursor: not-allowed</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section id="cards" class="section">
+        <div class="container">
+            <h2 class="section-title">Cards</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">Standard Card</div>
+                    <div class="card-content">
+                        This is a standard card with dark background (#313338). Hover over this card to see the elevation effect. Perfect for content sections and information blocks.
+                    </div>
+                </div>
+
+                <div class="card-framed">
+                    <div class="card-title">Framed Card</div>
+                    <div class="card-content">
+                        This is a framed card with 80% white background (#F5F5F5). Used for important call-outs and highlighted information. Features backdrop blur for depth.
+                    </div>
+                </div>
+
+                <div class="card" style="border-left: 4px solid var(--gaming-gold);">
+                    <div class="card-title">Accent Card</div>
+                    <div class="card-content">
+                        Standard card with gold accent border. Use for emphasized content or active states. The gold border draws attention to important information.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacing Section -->
+    <section id="spacing" class="section">
+        <div class="container">
+            <h2 class="section-title">Spacing System</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">
+                Based on <strong style="color: var(--gaming-gold);">8px grid system</strong>
+            </p>
+
+            <div class="spacing-grid">
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-xs</div>
+                    <div class="spacing-visual" style="width: 4px;"></div>
+                    <div class="spacing-value">4px (0.25rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-sm</div>
+                    <div class="spacing-visual" style="width: 8px;"></div>
+                    <div class="spacing-value">8px (0.5rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-md</div>
+                    <div class="spacing-visual" style="width: 16px;"></div>
+                    <div class="spacing-value">16px (1rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-lg</div>
+                    <div class="spacing-visual" style="width: 24px;"></div>
+                    <div class="spacing-value">24px (1.5rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-xl</div>
+                    <div class="spacing-visual" style="width: 32px;"></div>
+                    <div class="spacing-value">32px (2rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-2xl</div>
+                    <div class="spacing-visual" style="width: 48px;"></div>
+                    <div class="spacing-value">48px (3rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-3xl</div>
+                    <div class="spacing-visual" style="width: 64px;"></div>
+                    <div class="spacing-value">64px (4rem)</div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-label">--spacing-4xl</div>
+                    <div class="spacing-visual" style="width: 96px;"></div>
+                    <div class="spacing-value">96px (6rem)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animations Section -->
+    <section id="animations" class="section">
+        <div class="container">
+            <h2 class="section-title">Animations</h2>
+
+            <div class="animation-grid">
+                <div class="animation-demo">
+                    <div class="animation-box anim-fade"></div>
+                    <div class="animation-label">Fade In/Out</div>
+                    <div class="animation-spec">duration: 0.3s | ease-in-out</div>
+                </div>
+
+                <div class="animation-demo">
+                    <div class="animation-box anim-slide"></div>
+                    <div class="animation-label">Slide Animation</div>
+                    <div class="animation-spec">duration: 0.6s | ease</div>
+                </div>
+
+                <div class="animation-demo">
+                    <div class="animation-box anim-scale"></div>
+                    <div class="animation-label">Scale Transform</div>
+                    <div class="animation-spec">transform: scale(1.05)</div>
+                </div>
+
+                <div class="animation-demo">
+                    <div class="animation-box anim-bounce"></div>
+                    <div class="animation-label">Bounce Effect</div>
+                    <div class="animation-spec">cubic-bezier easing</div>
+                </div>
+            </div>
+
+            <div class="code-block" style="margin-top: 2rem;">
+                <code>
+/* Standard Transitions */<br>
+transition: all 0.3s ease; /* Buttons, hover states */<br>
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* Cards */<br>
+transition: opacity 0.6s ease, transform 0.6s ease; /* Scroll animations */
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Section -->
+    <section id="responsive" class="section">
+        <div class="container">
+            <h2 class="section-title">Responsive Breakpoints</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">
+                Mobile-first approach with progressive enhancement
+            </p>
+
+            <div class="breakpoint-grid">
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Mobile (Default)</div>
+                    <div class="breakpoint-value">< 640px</div>
+                </div>
+
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Small Tablet</div>
+                    <div class="breakpoint-value">≥ 640px</div>
+                </div>
+
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Tablet</div>
+                    <div class="breakpoint-value">≥ 768px</div>
+                </div>
+
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Laptop</div>
+                    <div class="breakpoint-value">≥ 1024px</div>
+                </div>
+
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Desktop</div>
+                    <div class="breakpoint-value">≥ 1280px</div>
+                </div>
+
+                <div class="breakpoint-item">
+                    <div class="breakpoint-name">Large Desktop</div>
+                    <div class="breakpoint-value">≥ 1536px</div>
+                </div>
+            </div>
+
+            <div class="code-block" style="margin-top: 2rem;">
+                <code>
+/* Mobile First Approach */<br>
+.component { font-size: 16px; } /* Mobile default */<br>
+<br>
+@media (min-width: 768px) {<br>
+&nbsp;&nbsp;.component { font-size: 18px; } /* Tablet */<br>
+}<br>
+<br>
+@media (min-width: 1024px) {<br>
+&nbsp;&nbsp;.component { font-size: 20px; } /* Desktop */<br>
+}
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Icons Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Icon Guidelines</h2>
+
+            <div class="icon-grid">
+                <div class="icon-sample">
+                    <div class="icon-box">⏱️</div>
+                    <div class="icon-label">Time</div>
+                </div>
+
+                <div class="icon-sample">
+                    <div class="icon-box">🚀</div>
+                    <div class="icon-label">Potential</div>
+                </div>
+
+                <div class="icon-sample">
+                    <div class="icon-box">🧠</div>
+                    <div class="icon-label">Mindset</div>
+                </div>
+
+                <div class="icon-sample">
+                    <div class="icon-box">👨‍🏫</div>
+                    <div class="icon-label">Access</div>
+                </div>
+
+                <div class="icon-sample">
+                    <div class="icon-box">👥</div>
+                    <div class="icon-label">Community</div>
+                </div>
+            </div>
+
+            <div class="code-block" style="margin-top: 2rem;">
+                <code>
+/* Icon Specifications */<br>
+Format: SVG (preferred) or PNG<br>
+Size: 64x64px minimum<br>
+Color: Monochrome (styleable with CSS filters)<br>
+Usage: Benefits section, feature highlights
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="font-gaming" style="font-size: 14.4px; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem;">
+                RANK UP ACADEMY - DESIGN SYSTEM SHOWCASE
+            </p>
+            <p style="font-size: 14px; font-weight: 400;">
+                This page demonstrates the complete design system including colors, typography, components, spacing, animations, and responsive breakpoints.
+            </p>
+            <p style="font-size: 12px; margin-top: 1rem;">
+                © 2025 Rank Up Academy. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effect to color cards to show hex value
+        document.querySelectorAll('.color-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const hex = this.querySelector('.color-hex').textContent;
+                navigator.clipboard.writeText(hex).then(() => {
+                    const original = this.querySelector('.color-name').textContent;
+                    this.querySelector('.color-name').textContent = 'Copied!';
+                    setTimeout(() => {
+                        this.querySelector('.color-name').textContent = original;
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
