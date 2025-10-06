@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Up Academy - Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            background: #333642;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            max-width: 200px;
+            width: 100%;
+        }
+
+        .maintenance-container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            color: #e0e0e0;
+        }
+
+        /* Discord Chat Simulation */
+        .chat-container {
+            background: #36393f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            height: 400px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            color: #b9bbbe;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #4f545c;
+            text-align: left;
+        }
+
+        .messages-wrapper {
+            flex: 1;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #messages {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .messages-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages-wrapper::-webkit-scrollbar-track {
+            background: #2f3136;
+            border-radius: 4px;
+        }
+
+        .messages-wrapper::-webkit-scrollbar-thumb {
+            background: #202225;
+            border-radius: 4px;
+        }
+
+        .messages-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #18191c;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.75rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .username {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .username .timestamp {
+            color: #72767d;
+            font-size: 0.75rem;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .message-text {
+            color: #dcddde;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            margin-top: 1rem;
+            border-top: 1px solid #4f545c;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            padding-top: 0.5rem;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #72767d;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-4px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .logo { max-width: 150px; }
+            .chat-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="RUA_LOGO_SQUARE.png" alt="Rank Up Academy" class="logo" id="logo">
+
+    <div class="maintenance-container">
+        <h1>Rank Up Academy is Under Maintenance</h1>
+        <p class="subtitle">We're upgrading our systems to deliver you an even better coaching experience. We'll be back online shortly!</p>
+
+        <div class="chat-container">
+            <div class="chat-header"># maintenance-updates</div>
+            <div class="messages-wrapper" id="messagesWrapper">
+                <div id="messages"></div>
+            </div>
+            <div class="typing-indicator">
+                <div class="avatar">🛠️</div>
+                <div class="message-content">
+                    <div class="username">Tech Team</div>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "Our engineers have {minutes} minutes to fix it… or they're getting nerfed in the next patch.",
+            "Patching complete in {minutes} minutes... unless the intern presses Alt+F4 again.",
+            "Our engineers are on overtime! They've got {minutes} minutes to fix this before getting nerfed harder than Mercy in 2018.",
+            "Hold tight — the payload stopped. We've got {minutes} minutes to get it moving again before the match times out.",
+            "Lucio's trying to speed boost our servers, but the beat dropped too hard. ETA: {minutes} minutes.",
+            "Our engineers are contesting the point! They've got {minutes} minutes to push it before sudden death.",
+            "We're mid-patch — literally. The devs have {minutes} minutes to bring the site back before Reinhardt charges their desks.",
+            "Server's down, but Winston's working on the science. Give him {minutes} minutes before primal rage kicks in.",
+            "Our devs went for a team rez. Give them {minutes} minutes — and maybe a damage boost.",
+            "Sigma's experimenting with gravity again. Our uptime collapsed into a singularity. Reboot in {minutes} minutes.",
+            "Server HP critical. Baptiste is yelling 'Immortality field's up!' for {minutes} minutes.",
+            "Tracer blinked through our firewall. Give us {minutes} minutes to recall her.",
+            "Moira's draining our server resources again. We need {minutes} minutes to coalescence this chaos.",
+            "Doomfist just meteor striked our database. Recovery mode: {minutes} minutes.",
+            "Sombra hacked the mainframe... again. Decrypting in {minutes} minutes.",
+            "Zarya's bubbling our servers to prevent further damage. {minutes} minutes until we're at full charge.",
+            "Roadhog hooked our uptime and threw it off the map. Respawn timer: {minutes} minutes.",
+            "Genji deflected a SQL injection back at us. We need {minutes} minutes to nano-boost our defenses."
+        ];
+
+        let minutesRemaining = 57;
+        let messageIndex = 0;
+        let shuffledMessages = [];
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function formatTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+
+        function addMessage() {
+            const messagesContainer = document.getElementById('messages');
+            const messagesWrapper = document.getElementById('messagesWrapper');
+
+            if (messageIndex >= shuffledMessages.length) {
+                shuffledMessages = shuffleArray(messages);
+                messageIndex = 0;
+            }
+
+            const messageText = shuffledMessages[messageIndex].replace('{minutes}', minutesRemaining);
+            messageIndex++;
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `
+                <div class="avatar">🛠️</div>
+                <div class="message-content">
+                    <div class="username">Tech Team <span class="timestamp">${formatTime()}</span></div>
+                    <div class="message-text">${messageText}</div>
+                </div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+
+            // Auto-scroll to bottom
+            messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
+        }
+
+        setInterval(() => {
+            if (minutesRemaining > 0) {
+                minutesRemaining--;
+            }
+        }, 60000);
+
+        shuffledMessages = shuffleArray(messages);
+        addMessage();
+
+        setInterval(addMessage, 10000);
+
+        const logo = document.getElementById('logo');
+        logo.onerror = function() {
+            this.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
